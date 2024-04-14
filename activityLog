@@ -1,0 +1,35 @@
+hey guys
+- No solid website idea yet. we will go ahead making the website and add in the idea later
+- this week week: draft websites: HTML framework, CSS file (using bootstrap), and maybe draft javascript - we'll add in functionality w7 when we learn about servers.
+
+
+14/4/24
+Some ideas:
+
+Harry Potter theme:
+- Upon creating an account on the website, user gets sorted into the 4 houses (Gryffindor, Slytherin, Hufflepuff, Ravenclaw)
+- each forum/message board can be exclusive to the house, or we can include different classes, allowing poeple from other 
+houses to speak to each other during class/other activities
+- each user's house will be tagged next to their name whenever they post on the forum.
+
+Video game idea:
+- users can create their own request/chatboard, players can reply to them and 'challenge' them. 
+whoever wins the 'challenge' gets 1 point (and loser gets deducted a point).
+- leaderboard keeps track of who has most points
+- can do something simple like paper scissors rock. 
+e.g. user 1 creates a post and types in rock. a message board will appear on the main page saying user1 is proposing a challenge,
+but doesnt show that user1 chose rock. then user2 sees this and replies their answer, e.g. paper.
+The website then determines who the winner is, user2 in this case and allocates user2 a point, and deducts a point from user1.
+
+
+Satirical Cooking idea:
+- users can make a post starting with one ingredient. e.g. user1 says bacon
+- other users can type a single ingredient of their own as a reply
+- after x amount of replies the website says something like 'you have made ___!'
+
+e.g.
+
+user1: bacon
+user2: watermelon
+user3: bread
+system: you have made a bacon watermelon sandwhich!
