@@ -33,3 +33,10 @@ user1: bacon
 user2: watermelon
 user3: bread
 system: you have made a bacon watermelon sandwhich!
+
+Art gallery:
+> Upon entering art gallery plaform, users are given certain amount of coins or tokens.
+> With these, they interact with the art on the platform.
+> Users can showcase and sell their arts, to increase their token balance. 
+> They can buy other users' art.
+> The plaform dashboard displays users with the highest art sales, feature to search art by keyword, sort the arts by the highest or lowest value, etc.
