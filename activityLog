@@ -22,10 +22,10 @@ but doesnt show that user1 chose rock. then user2 sees this and replies their an
 The website then determines who the winner is, user2 in this case and allocates user2 a point, and deducts a point from user1.
 
 
-Satirical Cooking idea:
+~~Satirical Cooking idea:~~
 - users can make a post starting with one ingredient. e.g. user1 says bacon
 - other users can type a single ingredient of their own as a reply
-- after x amount of replies the website says something like 'you have made ___!'
+- after x amount of replies the website says something like 'you have made ___!'~~
 
 e.g.
 
