@@ -26,7 +26,7 @@ def signup():
 
     db = get_db_connection()
     c = db.cursor()
-    results = c.execute('SELECT * FROM userdata WHERE username = "'+username+'";')
+    results = c.execute('SELECT * FROM userdata WHERE username = ?;', (username))
     # Input validation
     if not (username and email and password and confirm_password):
         return jsonify({'error': 'All fields are required'})
@@ -36,7 +36,7 @@ def signup():
         return jsonify({'error': 'Username already exists'})
     else:
         # Create new user
-        c.execute('INSERT INTO userdata VALUES ("'+username+'","'+email+'","'+password+'",0);')
+        c.execute('INSERT INTO userdata VALUES (?);'(username, email, password, 0))
         db.commit()
         db.close()
         return jsonify({'success': 'User created successfully'})
