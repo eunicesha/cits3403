@@ -87,6 +87,27 @@ def login():
             # Log in details were correct, return success
             return jsonify({'success': 'Login successful'})
 
+@app.route('/play', methods = ['POST'])
+def play():
+    # Get user choice
+    choice = request.form.get('choice')
+    player1 = 'scissors'
+    #check if there was actually a choice
+    if not (choice):
+        return jsonify({'error': 'Choose.'})
+    if choice == player1:
+        return jsonify({'success': 'Draw!'})
+    # see if you won
+    with get_db_connection() as dbconnection:
+        cursor = dbconnection.cursor()
+        cursor.execute('SELECT beats FROM psr WHERE option = ?', (choice,))
+        result = cursor.fetchone()
+        if result[0] == player1:
+            return jsonify({'success': 'You won!!'})
+        else:
+            return jsonify({'success': 'You lost :('})
+
+
 
 
 
