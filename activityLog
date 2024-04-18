@@ -40,3 +40,10 @@ Art gallery:
 > Users can showcase and sell their arts, to increase their token balance. 
 > They can buy other users' art.
 > The plaform dashboard displays users with the highest art sales, feature to search art by keyword, sort the arts by the highest or lowest value, etc.
+
+18/4/24
+Functionality of PSR website:
+- users can gamble points, ie play for 10 points but lose 10 points if you lose 
+- users request: '<username> wants to play for 100 points,' request stores their move 
+- users respond with a move
+- search function: search based on username of number of points
