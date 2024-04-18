@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='play.js') }}"></script>
+</head>
+<body>
+    <h2>Paper Scissors Rock</h2>
+    <form id="play">
+        <input type="radio" id="paper" name="choice" value="paper">
+        <label for="paper">Paper</label><br>
+        <input type="radio" id="scissors" name="choice" value="scissors">
+        <label for="scisors">Scissors</label><br>
+        <input type="radio" id="rock" name="choice" value="rock">
+        <label for="rock">Rock</label><br>
+        <button type="submit">Play</button>
+    </form>
+    <div id="Pmessage"></div>
+</body>
+</html>
