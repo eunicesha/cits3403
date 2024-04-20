@@ -1,5 +1,14 @@
 Idea: Video game idea
-- 'Paper scissors rock' type beat
+- 'Paper scissors rock' (for now)
 
+Frontend:
+- Introduction: Explains game rules
+- Login or Register an account
+- Users can see people seeking a challenge. (We should provide bots that seek challenges too so it doesn't look empty)
 
-
+Backend:
+- Flask for server
+- SQLite for database, storing accounts, game results, challenges/requests
+- Must be able to authenticate users and sessions
+- handle outcomes of games/challenges and issue points to each player
+- AJAX for real-time interaction of website
