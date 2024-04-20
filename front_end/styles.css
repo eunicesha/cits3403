@@ -25,6 +25,17 @@ button {
     margin-top: 20px;
 }
 
+.challenge-btn{
+    transition: ease-out 0.3s;
+}
+
+.challenge-btn:hover{
+    box-shadow: inset 250px 0 0 0 #E31C1C;
+    cursor: pointer;
+    color:black
+}
+
+
 .navbar {
     position: fixed;
     width: 100%;

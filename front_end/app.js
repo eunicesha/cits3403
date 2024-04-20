@@ -29,7 +29,7 @@ function loadChallenges() {
                     <div class="card-body">
                         <h5 class="card-title">${challenge.text}</h5>
                         <p class="card-text">Status: ${challenge.status}</p>
-                        <button class="btn btn-primary" onclick="acceptChallenge(${challenge.id})">Accept Challenge</button>
+                        <button class="btn btn-primary challenge-btn" onclick="acceptChallenge(${challenge.id})">Accept Challenge</button>
                     </div>
                 </div>
             </div>
