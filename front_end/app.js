@@ -43,3 +43,4 @@ function acceptChallenge(challengeId) {
     console.log("Challenge accepted:", challengeId);
     alert(`Challenge ${challengeId} accepted!`);
 }
+
