@@ -48,9 +48,18 @@ button {
 .navbar-nav {
     margin-left: auto;
     margin-right: auto;
+
     
 }
 
-.nav-item{
-
+.align-right-buttons{
+    margin-right: 20px; 
+    
 }
+
+.nav-acc-item{
+    margin-right:10px;
+    
+} 
+
+
