@@ -27,51 +27,76 @@
                         <a class="nav-link" href="#">Logout</a>
                     </li>
                 </ul>
+
+                <ul class="navbar-nav" right:100px > 
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#signInModal">
+                            Sign In
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#createAccountModal">
+                            Create Account
+                        </button>
+                    </li>
+                </ul>
+                
             </div>
         </nav>
 
 
         <!--sign in modal box-->
-        <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
-            <div class="mod-box">
-                <div class="mod-content">
-                    <div class="mod-header">
-                        <h5 class="mod-title" id="signInModalLabel">Sign In</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="mod-body">
-                        <form id="signInForm">
-                            
-
-
-
-
-                        </form>
-
-                    </div>
-
-
+    <div class="modal fade" id="signInModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signInForm">
+                        <div class="mb-3">
+                            <label for="signInEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="signInEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signInPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signInPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" >Sign In</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-
-
-
-        
-
-
-
+    <div class="modal fade" id="createAccountModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signInModalLabel">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createAccountForm">
+                        <div class="mb-3">
+                            <label for="createEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="createEmail" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="createPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="createPassword" required> 
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
             
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signInModal">
-            Sign In
-        </button>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#createAccountModal">
-            Create Account
-        </button>
         
         <div class="container mt-4">
             <h1>Roshambo'd!</h1>
