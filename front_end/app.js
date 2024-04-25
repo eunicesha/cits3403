@@ -44,3 +44,4 @@ function acceptChallenge(challengeId) {
     alert(`Challenge ${challengeId} accepted!`);
 }
 
+
