@@ -92,3 +92,32 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+# Route for initiating a game
+@app.route("/game/create", methods = ["GET", "POST"])
+@login_required
+def create_game():
+    if(request.method == "GET"):
+        #have to have a html page called startgame.html. Was thiknking of having davins pop-up functionality?
+        return(render_template("startgame.html",title = "Create a new game"))
+    if(request.get_json()):
+        data = request.get_json()
+        if(not data):
+            response_dict = {"message" : "Validation error, please make sure javascript is enabled for this site"}
+            resp = make_response(response_dict)
+            resp.headers["status"] = 400
+            return(resp)
+        try:
+            # startgame.html's form will have to have this data. will add js functionality to check if user actually has sufficient points
+            stake = data["stake"]
+            move = data["move"]
+        except KeyError as e:
+            return(jsonify({"url" : False}), 400)
+        if(not stake):
+            return(jsonify({"url" : False}), 400)
+        if(not data):
+            return(jsonify({"url" : False}), 400)
+        # need to fix timestamp + author?
+        game = Post(move = move, stake = stake, user_id = current_user.id)
+        db.session.add(game)
+        db.session.commit()
+    return(jsonify('Game successfully created'))
