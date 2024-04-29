@@ -54,19 +54,16 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
-class Response(db.Model):
-    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+class Game(db.Model):
+    id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id),
+                                               index=True)
     move: so.Mapped[str] = so.mapped_column(sa.String(120))
-    timestamp: so.Mapped[datetime] = so.mapped_column(
-        index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
                                                index=True)
-    author: so.Mapped[User] = so.relationship(back_populates='posts')
-    game_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id),
-                                               index=True)
+    winner: move: so.Mapped[str] = so.mapped_column(sa.String(120))
     def __repr__(self):
         return '<{}>'.format(self.body)
-    
+
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))
