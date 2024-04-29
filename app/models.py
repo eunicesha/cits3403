@@ -53,7 +53,7 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
-class response(db.Model):
+class Response(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     move: so.Mapped[str] = so.mapped_column(sa.String(120))
     timestamp: so.Mapped[datetime] = so.mapped_column(
