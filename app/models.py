@@ -49,7 +49,8 @@ class Post(db.Model):
                                                index=True)
 
     author: so.Mapped[User] = so.relationship(back_populates='posts')
-
+    winner: so.Mapped[str] = so.mapped_column(sa.String(120)),
+                                               default = Null)
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
