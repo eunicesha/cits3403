@@ -4,7 +4,7 @@ from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import User, Post, Response
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
@@ -120,4 +120,27 @@ def create_game():
         game = Post(move = move, stake = stake, user_id = current_user.id)
         db.session.add(game)
         db.session.commit()
-    return(jsonify('Game successfully created'))
+    return(jsonify('Game successfully created!'))
+
+# Route for responding to a game
+@app.route("/game/play", methods = ["GET", "POST"])
+@login_required
+def play_game():
+    if(request.get_json()):
+        data = request.get_json()
+        if(not data):
+            response_dict = {"message" : "Validation error, please make sure javascript is enabled for this site"}
+            resp = make_response(response_dict)
+            resp.headers["status"] = 400
+            return(resp)
+        try:
+            move = data["move"]
+        except KeyError as e:
+            return(jsonify({"url" : False}), 400)
+        if(not move):
+            return(jsonify({"url" : False}), 400)
+        game = Response(move = move, user_id = current_user.id)
+        db.session.add(game)
+        db.session.commit()
+    return(jsonify('Response complete'))
+
