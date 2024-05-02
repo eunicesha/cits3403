@@ -8,42 +8,30 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function loadChallenges() {
-    //example data
+    //sample data - need to find a way to dynamically fill from db
     const challenges = [
-        {
-            id: 1, text: "Mia is looking for a challenger!", status: "Open", 
-        },
-        {
-            id: 2, text: "Tashi is looking for a challenger!", status: "Open"
-        },
-        {
-            id: 3, text: "Eunice is looking for a challenger!", status: "Open"
-        },
-        {
-            id: 4, text: "Davin is looking for a challenger!", status: "Open"
-        },
+        { id: 1, name: 'Mia' },
+        { id: 2, name: 'Tashi' },
+        { id: 3, name: 'Eunice' }
     ];
 
     const challengesContainer = document.getElementById('challenges');
     challenges.forEach(challenge => {
-        const cardHtml = `
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${challenge.text}</h5>
-                        <p class="card-text">Status: ${challenge.status}</p>
-                        <button class="btn btn-primary challenge-btn" onclick="acceptChallenge(${challenge.id})">Accept Challenge</button>
-                    </div>
-                </div>
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-body">
+                <p>${challenge.name} is looking for a challenger!</p>
+                <button class="btn btn-primary" onclick="acceptChallenge()">Accept Challenge</button>
             </div>
         `;
-        challengesContainer.innerHTML += cardHtml;
+        challengesContainer.appendChild(card);
     });
 }
 
-function acceptChallenge(challengeId) {
-    // what happens after accepting challenge
-    console.log("Challenge accepted:", challengeId);
-    alert(`Challenge ${challengeId} accepted!`);
-}
 
+//redirects to challenge page
+function acceptChallenge() {
+    window.location.href = '1v1 page/challenge.html'; 
+}
+document.addEventListener('DOMContentLoaded', loadChallenges);
