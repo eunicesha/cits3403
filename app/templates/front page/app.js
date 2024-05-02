@@ -18,7 +18,10 @@ function loadChallenges() {
         },
         {
             id: 3, text: "Eunice is looking for a challenger!", status: "Open"
-        }
+        },
+        {
+            id: 4, text: "Davin is looking for a challenger!", status: "Open"
+        },
     ];
 
     const challengesContainer = document.getElementById('challenges');
