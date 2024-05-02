@@ -4,7 +4,7 @@ from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import User, Post, Game
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
@@ -92,6 +92,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+    
 # Route for initiating a game
 @app.route("/game/create", methods = ["GET", "POST"])
 @login_required
@@ -121,3 +122,43 @@ def create_game():
         db.session.add(game)
         db.session.commit()
     return(jsonify('Game successfully created'))
+
+# Route for responding to a game
+@app.route("/game/response", methods = ["GET", "POST"])
+@login_required
+def play_game():
+    if(request.get_json()):
+        data = request.get_json()
+        if(not data):
+            response_dict = {"message" : "Validation error, please make sure javascript is enabled for this site"}
+            resp = make_response(response_dict)
+            resp.headers["status"] = 400
+            return(resp)
+        try:
+            #game has to store its id?
+            game_id = data["game_id"]
+            move = data["move"]
+        except KeyError as e:
+            return(jsonify({"url" : False}), 400)
+        if(not move):
+            return(jsonify({"url" : False}), 400)
+        request = Post.query.filter_by(id=game_id).first()
+        initiator = User.query.filter_by(id=request.user_id).first()
+        responder = User.query.filter_by(id=current_user.id).first()
+        winner = initiator.username
+        if request.move == move:
+            winner = 'Draw'
+        else if request.move == 'rock':
+            if move == 'paper':
+                winner = responder.username
+        else if request.move == 'paper':
+            if move == 'scissors':
+                winner = responder.username
+        else if request.move == 'scissors':
+            if move == 'rock':
+                winner = responder.username
+        game = Game(id = game_id, move = move, user_id = current_user.id, winner = winner)
+        db.session.add(game)
+        db.session.commit()
+    return(jsonify('The winner is' + winner))
+
