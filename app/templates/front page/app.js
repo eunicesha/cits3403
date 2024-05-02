@@ -35,3 +35,4 @@ function acceptChallenge() {
     window.location.href = '1v1 page/challenge.html'; 
 }
 document.addEventListener('DOMContentLoaded', loadChallenges);
+
