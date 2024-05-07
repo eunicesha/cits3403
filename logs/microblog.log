@@ -1,1 +1,51 @@
-2024-04-24 22:34:20,253 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-04-30 17:08:57,253 ERROR: Exception on /login [GET] [in /Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/hoiyensha/rock paper/cits3403/app/routes.py", line 35, in login
+    return render_template('login.html', title='Sign In', form=form)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/hoiyensha/rock paper/cits3403/app/templates/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/hoiyensha/rock paper/cits3403/app/templates/base.html", line 57, in top-level template code
+    <script src="{{ url_for('app', filename='static/scripts/app.js') }}"></script>
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/werkzeug/routing/map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'app' with values ['filename']. Did you mean 'static' instead?
+2024-04-30 17:10:12,825 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-04-30 17:17:15,242 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 16:36:57,852 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 16:37:18,028 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 16:39:27,853 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 16:53:34,241 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 16:59:12,297 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 17:03:34,620 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 17:06:55,237 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:36:32,974 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:37:33,525 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:38:00,675 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:38:09,063 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:40:04,682 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:40:46,469 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:41:04,723 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:41:40,200 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:43:42,436 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:45:42,152 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-07 17:53:06,600 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]

@@ -1,10 +1,11 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import jsonify, render_template, flash, redirect, url_for, request
 from app import app
+from app.determine_outcome import game_logic
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import Challenge, GameResults, User
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
@@ -92,3 +93,40 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+@app.route('/play', methods=['GET', 'POST'])
+@login_required
+def play_game():
+    if request.method == 'POST':
+        user_id = current_user.id
+        opp_id = request.form.get("opp_id")
+        user_choice = request.form.get("user_choice")
+        opp_choice = request.form.get("opp_choice")
+
+        if not all([opp_id, user_choice, opp_choice]):
+            return "Error: Missing data", 400
+
+        result = game_logic(user_choice, opp_choice)
+        final_result = f"{current_user.username} {'wins against' if result == 'win' else 'loses to' if result == 'lose' else 'ties with'} opponent {opp_id}"
+        
+        new_game_result = GameResults(user_id=user_id, user_id2=opp_id,
+                                      user_choice=user_choice, user_choice2=opp_choice,
+                                      result=final_result)
+        db.session.add(new_game_result)
+        db.session.commit()
+
+        return render_template('play.html', result=final_result)
+    return render_template('play.html')
+
+
+
+@app.route('/api/accept_challenge/<int:challenge_id>', methods=['GET','POST'])
+def accept_challenge(challenge_id):
+    challenge = Challenge.query.get(challenge_id)
+    if challenge:
+        challenge.status = 'Accepted'  
+        db.session.commit() 
+        return jsonify({'success': True, 'message': 'Challenge accepted'})
+    else:
+        return jsonify({'success': False, 'message': 'Challenge not found'}), 404
+    

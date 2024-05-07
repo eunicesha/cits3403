@@ -22,6 +22,7 @@ function loadChallenges() {
     ];
 
     const challengesContainer = document.getElementById('challenges');
+    fetch('api/challenges')
     challenges.forEach(challenge => {
         const cardHtml = `
             <div class="col-sm-6 col-md-4">
@@ -39,8 +40,11 @@ function loadChallenges() {
 }
 
 function acceptChallenge(challengeId) {
-    // what happens after accepting challenge
-    console.log("Challenge accepted:", challengeId);
-    alert(`Challenge ${challengeId} accepted!`);
+    fetch(`/api/accept_challenge/${challengeId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            window.location.href = '/play';
+        })
+        .catch(error => console.error('Error:', error));
 }
 

@@ -52,3 +52,7 @@ function isValidEmail(email) {
     let re = /.+@.+\..+/g;
     return(re.test(String(email).toLowerCase()));
 }
+
+document.getElementById('username').addEventListener('blur', function() {
+    validateNewUsername(this.value);
+})

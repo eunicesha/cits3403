@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from email.policy import default
 from typing import Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
@@ -9,12 +10,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import md5
 
 class User(UserMixin, db.Model):
-    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    id: so.Mapped[int] = so.mapped_column(primary_key=True) #so.Mapped to tell python what data type is used in the column 
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True,
                                                 unique=True)
     email: so.Mapped[str] = so.mapped_column(sa.String(120), index=True,
                                              unique=True)
-    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
+    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256)) # so.mapped_column to define additional settings 
 
     posts: so.WriteOnlyMapped['Post'] = so.relationship(
         back_populates='author')
@@ -53,3 +54,25 @@ class Post(db.Model):
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))
+
+class GameResults(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                               index = True)
+    user_id2: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                               index = True)
+    user_choice: so.Mapped[str] = so.mapped_column(sa.String(8))
+    user_choice2: so.Mapped[str] = so.mapped_column(sa.String(8))
+    result: so.Mapped[str] = so.mapped_column(sa.String(20))
+    
+
+class Challenge(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    accepted: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                                index=True)
+    challenger: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                                  index=True)
+    status = db.Column(db.String(50), default='Open')
+
+
+    

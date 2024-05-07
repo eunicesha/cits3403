@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Play Game</title>
+    
+</head>
+<body>
+    <h1>Choose Your Move!</h1>
+    <form action="/play" method="post">
+        <input type="hidden" name="opp_id" value="{{ opp_id }}">
+        <input type="hidden" name="opp_choice" value="rock"> 
+        <button type="submit" name="user_choice" value="rock">Rock</button>
+        <button type="submit" name="user_choice" value="paper">Paper</button>
+        <button type="submit" name="user_choice" value="scissors">Scissors</button>
+    </form>
+
+
+</body>
+</html>

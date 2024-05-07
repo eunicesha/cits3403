@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+    <h1>Welcome to Roshambo'd!</h1>
+    <p>Challenge someone now or create your own challenge.</p>
+    <div id="challenges" class="row"> </div>
+    <button class="btn btn-primary" onclick="createChallenge()">Create Challenge</button>
+
+
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
 {% endblock %}
