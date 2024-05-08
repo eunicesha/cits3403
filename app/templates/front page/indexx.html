@@ -33,12 +33,12 @@
              
                 <ul class="navbar-nav align-right-buttons" right:100px > 
                     <li class="nav-acc-item">
-                        <button type="button" class="btn btn-outline-success my-2 my-sm-0 title" style = "color: antiquewhite" data-bs-toggle="modal" data-bs-target="#signInModal">
+                        <button type="button" class="btn btn-outline-success my-2 my-sm-0 title" style = "color: antiquewhite">
                             Sign In
                         </button>
                     </li>
                     <li class="nav-acc-item">
-                        <button type="button" class="btn btn-outline-primary my-2 my-sm-0 title style = "color: antiquewhite"" data-bs-toggle="modal" data-bs-target="#createAccountModal">
+                        <button type="button" class="btn btn-outline-primary my-2 my-sm-0 title" style = "color: antiquewhite">
                             Create Account
                         </button>
                     </li>
@@ -51,12 +51,30 @@
 
         
         <div class="container mt-4">
-            <h1 class = "title gradient textoutline" style = "font-size: 5rem">Roshambo'd</h1>
-            <p class = "title gradient textoutline" style = "font-size: 2.5rem">Challenge someone now or create your own.</p>
+            <h1 class = "title gradient textoutline" style = "font-size: 5.5rem">Roshambo'd!</h1>
+            <p class = "title gradient textoutline" style = "font-size: 2.3rem">Challenge someone now or create your own.</p>
             
             <div id="challenges" class="row"> </div>
 
-            <button class="btn btn-primary fun" onclick="window.location.href='new challenge/new-challenge.html'">Create Challenge</button>
+            <button class="btn btn-primary fun" data-bs-toggle="modal" data-bs-target="#createChallengeModal">Create Challenge</button>
+
+            <!-- challenge modal box -->
+            <div class="modal fade" id="createChallengeModal" tabindex="-1" aria-labelledby="createChallengeModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createChallengeModalLabel">Create Your Challenge</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn btn-secondary">Paper</button>
+                            <button class="btn btn-secondary">Scissors</button>
+                            <button class="btn btn-secondary">Rock</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
