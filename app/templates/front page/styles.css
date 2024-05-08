@@ -115,6 +115,36 @@ margin: 0;
 
 }
 
+.titlebuttons{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #ffffff;
+    line-height: .8;
+    align-self: center;
+}
+
+#acceptChallengeModalLabel{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 2rem;
+    color: #ba6bff;
+    line-height: .8;
+}
+
+#createChallengeModalLabel{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 2rem;
+    color: #ff4040;
+    line-height: .8;
+}
+
+
+
 .gradient{
 background-image: var(--gradient);
 background-clip: text;
@@ -149,15 +179,6 @@ transition: background-position 350ms;
 background-position: right;
 } 
 
-#acceptChallengeModalLabel{
-    text-transform: uppercase;
-    font-weight: 900;
-    font-style: italic;
-    font-size: 2rem;
-    color: #fb508f;
-    line-height: .8;
-}
-
 
 .modal-dialog {
     display: flex;
@@ -167,7 +188,7 @@ background-position: right;
     margin: auto; 
 }
 
-/* Centering and sizing the modal content */
+/* centering and sizing the modal content */
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -177,29 +198,87 @@ background-position: right;
     min-width: 300px;
 }
 
-/* Ensuring the buttons inside the modal are centered and evenly spaced */
+/* buttons centred */
 .modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 250px; /* Set a fixed height to maintain the square shape */
+    height: 250px; 
 }
 
-/* Style adjustments for modal buttons to ensure they are visually appealing */
+
 .modal-body button {
-    width: 80%; /* Increase button width */
+    width: 200px; 
+    height: 50px;
     margin: 10px;
     padding: 10px;
 }
 
-/* Media query to handle smaller screens */
-@media (max-width: 576px) {
-    .modal-dialog {
-        max-width: 90%;
-        margin: 10px;
-    }
-    .modal-content {
-        min-width: 0; /* Allow modal content to adjust to smaller width */
-    }
+
+
+/* BUTTONS */
+.button-19 {
+  appearance: button;
+  background-color: #ffa938;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #ff3c3c;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
 }
