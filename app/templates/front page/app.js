@@ -21,8 +21,8 @@ function loadChallenges() {
         card.className = 'card';
         card.innerHTML = `
             <div class="card-body">
-                <p>${challenge.name} is looking for a challenger!</p>
-                <button class="btn btn-primary" onclick="acceptChallenge()">Accept Challenge</button>
+                <p class = title>${challenge.name} is looking for a challenger!</p>
+                <button class="btn btn-primary fun " onclick="acceptChallenge()">Accept Challenge</button>
             </div>
         `;
         challengesContainer.appendChild(card);
