@@ -21,7 +21,7 @@ function loadChallenges() {
         card.className = 'card';
         card.innerHTML = `
             <div class="card-body">
-                <p class = title>${challenge.name} is looking for a challenger!</p>
+                <p class = "title" style = "font-size: 26px">${challenge.name} is looking for a challenger!</p>
                 <button class="btn btn-primary fun " onclick="acceptChallenge()">Accept Challenge</button>
             </div>
         `;

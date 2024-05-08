@@ -19,11 +19,6 @@ body {
   }
 
 
-h1 > container{
-    font-size: 100px;
-}
-
-
 
 
 .container {
@@ -33,14 +28,15 @@ h1 > container{
     align-items: center;
     min-height: 10vh; 
     padding-top: 20px;
+    flex-wrap: wrap;
 }
 
 #challenges .card {
     width: 353px;
     height: 160px;
     margin: 10px;
+    display: flex;
 
-    
 }
 
 #challenges .card-body p {
@@ -112,18 +108,20 @@ margin: 0 0 .5em;
 text-transform: uppercase;
 font-weight: 900;
 font-style: italic;
-font-size: 3rem;
+font-size: 1rem;
 color: #ee6352;
 line-height: .8;
 margin: 0;
 
+}
+
+.gradient{
 background-image: var(--gradient);
 background-clip: text;
 color: transparent;
 display: inline-block;
 background-size: 300%;
 transition: background-position 1s;
-
 
 }
 
