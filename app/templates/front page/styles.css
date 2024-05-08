@@ -148,3 +148,16 @@ transition: background-position 350ms;
 .fun:hover {
 background-position: right;
 } 
+
+
+
+
+
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+    max-width: 75%; 
+    margin: auto; 
+}
+

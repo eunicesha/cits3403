@@ -1,18 +1,14 @@
-function createChallenge() {
-    // make a new challenge
-    alert("Please login first");
-}
-
 document.addEventListener("DOMContentLoaded", function() {
     loadChallenges();
 });
 
 function loadChallenges() {
-    //sample data - need to find a way to dynamically fill from db
+    // Sample data - for actual use, this should be fetched from a database or server
     const challenges = [
         { id: 1, name: 'Mia' },
         { id: 2, name: 'Tashi' },
-        { id: 3, name: 'Eunice' }
+        { id: 3, name: 'Eunice' },
+        { id: 3, name: 'Davin' },
     ];
 
     const challengesContainer = document.getElementById('challenges');
@@ -22,17 +18,20 @@ function loadChallenges() {
         card.innerHTML = `
             <div class="card-body">
                 <p class = "title" style = "font-size: 26px">${challenge.name} is looking for a challenger!</p>
-                <button class="btn btn-primary fun " onclick="acceptChallenge()">Accept Challenge</button>
+                <button class="btn btn-primary fun" onclick="openAcceptChallengeModal(${challenge.id})">Accept Challenge</button>
             </div>
         `;
         challengesContainer.appendChild(card);
     });
 }
 
-
-//redirects to challenge page
-function acceptChallenge() {
-    window.location.href = '1v1 page/challenge.html'; 
+function openAcceptChallengeModal(challengeId) {
+    // Retrieve the challenge details, if needed, or directly pass challengeId if no details are needed
+    console.log('Challenge ID:', challengeId); // note: use challengeId to fetch more details if needed
+    const modalTitle = document.querySelector('#acceptChallengeModalLabel');
+    const modalBody = document.querySelector('#acceptChallengeModal .modal-body');
+    modalTitle.textContent = `Accept Challenge #${challengeId}`;
+    // note: update modal content or actions based on the challengeId if needed
+    const acceptModal = new bootstrap.Modal(document.getElementById('acceptChallengeModal'));
+    acceptModal.show();
 }
-document.addEventListener('DOMContentLoaded', loadChallenges);
-
