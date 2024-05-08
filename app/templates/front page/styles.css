@@ -149,8 +149,14 @@ transition: background-position 350ms;
 background-position: right;
 } 
 
-
-
+#acceptChallengeModalLabel{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 2rem;
+    color: #fb508f;
+    line-height: .8;
+}
 
 
 .modal-dialog {
@@ -161,3 +167,39 @@ background-position: right;
     margin: auto; 
 }
 
+/* Centering and sizing the modal content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-width: 300px;
+}
+
+/* Ensuring the buttons inside the modal are centered and evenly spaced */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 250px; /* Set a fixed height to maintain the square shape */
+}
+
+/* Style adjustments for modal buttons to ensure they are visually appealing */
+.modal-body button {
+    width: 80%; /* Increase button width */
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Media query to handle smaller screens */
+@media (max-width: 576px) {
+    .modal-dialog {
+        max-width: 90%;
+        margin: 10px;
+    }
+    .modal-content {
+        min-width: 0; /* Allow modal content to adjust to smaller width */
+    }
+}
