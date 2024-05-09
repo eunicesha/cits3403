@@ -99,7 +99,7 @@ def edit_profile():
 def create_game():
     if(request.method == "GET"):
         #have to have a html page called startgame.html. Was thiknking of having davins pop-up functionality?
-        return(render_template("startgame.html",title = "Create a new game"))
+        return(render_template("new-challenge.html",title = "Create a new game"))
     if(request.get_json()):
         data = request.get_json()
         if(not data):
@@ -109,7 +109,7 @@ def create_game():
             return(resp)
         try:
             # startgame.html's form will have to have this data. will add js functionality to check if user actually has sufficient points
-            stake = data["stake"]
+            #stake = data["stake"]
             move = data["move"]
         except KeyError as e:
             return(jsonify({"url" : False}), 400)
