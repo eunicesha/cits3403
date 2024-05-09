@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
 function updateUserWagerLimits() {
     // assuming a function fetchUserPoints() that returns a promise with the points
     fetchUserPoints().then(points => {
-        document.getElementById('createWager').placeholder = `Max points: ${points}`;
+        document.getElementById('createWager').placeholder = `Your points: ${points}`;
         document.getElementById('createWager').max = points;
 
-        document.getElementById('acceptWager').placeholder = `Max points: ${points}`;
+        document.getElementById('acceptWager').placeholder = `Your points: ${points}`;
         document.getElementById('acceptWager').max = points;
     });
 }
@@ -23,12 +23,11 @@ function fetchUserPoints() {
 }
 
 function loadChallenges() {
-    // Sample data - for actual use, this should be fetched from a database or server
     const challenges = [
-        { id: 1, name: 'Mia' },
-        { id: 2, name: 'Tashi' },
-        { id: 3, name: 'Eunice' },
-        { id: 3, name: 'Davin' },
+        { id: 1, name: 'Mia', points: 50 },
+        { id: 2, name: 'Tashi', points: 30 },
+        { id: 3, name: 'Eunice', points: 20 },
+        { id: 4, name: 'Davin', points: 40 }
     ];
 
     const challengesContainer = document.getElementById('challenges');
@@ -37,13 +36,15 @@ function loadChallenges() {
         card.className = 'card';
         card.innerHTML = `
             <div class="card-body">
-                <p class = "title" style = "font-size: 26px">${challenge.name} is looking for a challenger!</p>
-                <button class="btn btn-primary fun" onclick="openAcceptChallengeModal(${challenge.id})">Accept Challenge</button>
+                <p class="title" style="font-size: 26px">${challenge.name} is looking for a challenger!<p>
+                <p class ="title" style:margin-botton 10px >Wager: ${challenge.points} points</p>
+                <button class="btn btn-primary fun" onclick="openAcceptChallengeModal(${challenge.id}, ${challenge.points})">Accept Challenge</button>
             </div>
         `;
         challengesContainer.appendChild(card);
     });
 }
+
 
 function openAcceptChallengeModal(challengeId) {
     // Retrieve the challenge details, if needed, or directly pass challengeId if no details are needed
