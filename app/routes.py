@@ -109,7 +109,7 @@ def create_game():
             return(resp)
         try:
             # startgame.html's form will have to have this data. will add js functionality to check if user actually has sufficient points
-            #stake = data["stake"]
+            stake = data["stake"]
             move = data["move"]
         except KeyError as e:
             return(jsonify({"url" : False}), 400)
