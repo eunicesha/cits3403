@@ -29,6 +29,14 @@ body {
     min-height: 10vh; 
     padding-top: 20px;
     flex-wrap: wrap;
+    width: 100%;
+}
+
+#challenges {
+    width: 100%; /* Ensure full width to center content */
+    display: flex;
+    justify-content: center; /* Centering children horizontally */
+    flex-wrap: wrap; /* Wrap items if they exceed the width */
 }
 
 #challenges .card {
@@ -36,7 +44,8 @@ body {
     height: 160px;
     margin: 10px;
     display: flex;
-
+    flex-direction: column; /* Ensure this if not already set */
+    align-items: center; /* Center content within each card */
 }
 
 #challenges .card-body p {

@@ -27,7 +27,8 @@ function loadChallenges() {
         { id: 1, name: 'Mia', points: 50 },
         { id: 2, name: 'Tashi', points: 30 },
         { id: 3, name: 'Eunice', points: 20 },
-        { id: 4, name: 'Davin', points: 40 }
+        { id: 4, name: 'Davin', points: 40 },
+        { id: 5, name: 'Bob', points: 69 },
     ];
 
     const challengesContainer = document.getElementById('challenges');
