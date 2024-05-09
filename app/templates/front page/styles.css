@@ -217,8 +217,8 @@ background-position: right;
 
 
 
-/* BUTTONS */
-.button-19 {
+/* choice BUTTONS */
+.button-choice {
   appearance: button;
   background-color: #ffa938;
   border: solid transparent;
@@ -249,7 +249,7 @@ background-position: right;
   width: 100%;
 }
 
-.button-19:after {
+.button-choice:after {
   background-clip: padding-box;
   background-color: #ff3c3c;
   border: solid transparent;
@@ -264,21 +264,21 @@ background-position: right;
   z-index: -1;
 }
 
-.button-19:main,
+.button-choice:main,
 .button-19:focus {
   user-select: auto;
 }
 
-.button-19:hover:not(:disabled) {
+.button-choice:hover:not(:disabled) {
   filter: brightness(1.1);
   -webkit-filter: brightness(1.1);
 }
 
-.button-19:disabled {
+.button-choice:disabled {
   cursor: auto;
 }
 
-.button-19:active {
+.button-choice:active {
   border-width: 4px 0 0;
   background: none;
 }

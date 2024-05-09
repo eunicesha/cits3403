@@ -2,7 +2,25 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     loadChallenges();
+    updateUserWagerLimits();
 });
+
+
+function updateUserWagerLimits() {
+    // assuming a function fetchUserPoints() that returns a promise with the points
+    fetchUserPoints().then(points => {
+        document.getElementById('createWager').placeholder = `Max points: ${points}`;
+        document.getElementById('createWager').max = points;
+
+        document.getElementById('acceptWager').placeholder = `Max points: ${points}`;
+        document.getElementById('acceptWager').max = points;
+    });
+}
+
+function fetchUserPoints() {
+    // placeholder for fetching user points; replace with actual API call
+    return Promise.resolve(100); // eg: User has 100 points
+}
 
 function loadChallenges() {
     // Sample data - for actual use, this should be fetched from a database or server
