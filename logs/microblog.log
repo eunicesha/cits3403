@@ -1,1 +1,61 @@
-2024-04-24 22:34:20,253 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-06 21:46:40,055 ERROR: Exception on /index [GET] [in C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\routes.py", line 53, in index
+    return render_template('index.html', title='Home Page')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 7, in block 'content'
+    <a href="{{url_for('page')}}">Game</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'game'. Did you mean 'page' instead?
+2024-05-06 21:48:31,214 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 21:55:47,147 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 21:57:03,637 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 21:58:11,388 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:00:25,595 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:00:51,391 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:01:24,619 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:03:17,669 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:04:16,952 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:13:53,832 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:17:07,239 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:18:36,432 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:20:17,625 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
+2024-05-06 22:21:17,613 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]

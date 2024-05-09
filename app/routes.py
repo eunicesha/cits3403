@@ -14,7 +14,7 @@ from app.forms import EditProfileForm
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('page'))
     
     form = LoginForm()
     if form.validate_on_submit():
@@ -29,7 +29,7 @@ def login():
         next_page = request.args.get('next')
         # validate the next URL to ensure redirects remain internal
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('page')
         return redirect(next_page)
     
     return render_template('login.html', title='Sign In', form=form)
@@ -38,7 +38,19 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('page'))
+
+#first page(after log in) view function
+@app.route('/page')
+@login_required
+def page():
+    return render_template('page.html', title='Home Page')
+
+#game view function
+@app.route('/game')
+@login_required
+def game():
+    return render_template('game.html', title='Home Page')
 
 @app.route('/')
 @app.route('/index')
