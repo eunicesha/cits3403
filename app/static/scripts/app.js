@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadChallenges();
 });
 
+
 function loadChallenges() {
     //example data
     const challenges = [

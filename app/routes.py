@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import jsonify, make_response, render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -8,7 +8,6 @@ from app.models import User, Post, Game
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -32,8 +31,29 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('/templates/login.html', title='Sign In', form=form)
 
+@app.route("/create_game", methods=["POST"])
+@login_required
+def create_game():
+    if request.method == "POST":
+        data = request.json
+        if not data:
+            return jsonify({"message": "Validation error, please make sure javascript is enabled for this site"}), 400
+        try:
+            stake = data["stake"]
+            move = data["move"]
+        except KeyError:
+            return jsonify({"message": "Invalid request data"}), 400
+        if not stake:
+            return jsonify({"message": "Stake is required"}), 400
+
+        game = Post(move=move, stake=stake, user_id=current_user.id)
+        db.session.add(game)
+        db.session.commit()
+        return jsonify({"message": "Game successfully created"}), 201  # HTTP 201 Created
+    else:
+        return render_template("new-challenge.html", title="Create a new game")
 
 @app.route('/logout')
 def logout():
@@ -43,9 +63,9 @@ def logout():
 @app.route('/')
 @app.route('/index')
 @login_required
-def index():
+def index1():
     # logic needed
-    return render_template('index.html', title='Home Page')
+    return render_template('indexx.html', title='Home Page')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -59,7 +79,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('signup.html', title='Register', form=form)
 
 @app.route('/user/<username>')
 @login_required
@@ -93,43 +113,45 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
     
-# Route for initiating a game
-@app.route("/game/create", methods = ["GET", "POST"])
-@login_required
-def create_game():
-    if(request.method == "GET"):
+# Route for initiating a game /templates/front_end/1v1 page/new-challenge
+#@app.route("/create_game", methods = ["GET", "POST"])
+#@login_required
+#def create_game():
+    #if(request.method == "GET"):
         #have to have a html page called startgame.html. Was thiknking of having davins pop-up functionality?
-        return(render_template("new-challenge.html",title = "Create a new game"))
-    if(request.get_json()):
-        data = request.get_json()
-        if(not data):
-            response_dict = {"message" : "Validation error, please make sure javascript is enabled for this site"}
-            resp = make_response(response_dict)
-            resp.headers["status"] = 400
-            return(resp)
-        try:
+        #return(render_template("new-challenge.html",title = "Create a new game"))
+    #if(request.get_json()):
+        #data = request.get_json()
+        #if(not data):
+            #response_dict = {"message" : "Validation error, please make sure javascript is enabled for this site"}
+            #resp = make_response(response_dict)
+            #resp.headers["status"] = 400
+            #return(resp)
+        #try:
             # startgame.html's form will have to have this data. will add js functionality to check if user actually has sufficient points
-            stake = data["stake"]
-            move = data["move"]
-        except KeyError as e:
-            return(jsonify({"url" : False}), 400)
-        if(not stake):
-            return(jsonify({"url" : False}), 400)
-        if(not data):
-            return(jsonify({"url" : False}), 400)
+            #stake = data["stake"]
+            #move = data["move"]
+        #except KeyError as e:
+        #    return(jsonify({"url" : False}), 400)
+        #if (not stake):
+        #    return(jsonify({"url" : False}), 400)
+        #if (not data):
+        #    return(jsonify({"url" : False}), 400)
         # need to fix timestamp + author?
-        game = Post(move = move, stake = stake, user_id = current_user.id)
-        db.session.add(game)
-        db.session.commit()
-    return(jsonify('Game successfully created'))
+        #game = Post(move = move, stake = stake, user_id = current_user.id)
+        #db.session.add(game)
+        #db.session.commit()
+    #return(jsonify('Game successfully created'))
+# Route for initiating a game
 
 # Route for responding to a game
-@app.route("/game/response", methods = ["GET", "POST"])
+#/templates/front_end/new challenge/
+@app.route("/play_game", methods = ["GET", "POST"])
 @login_required
 def play_game():
     if(request.get_json()):
         data = request.get_json()
-        if(not data):
+        if (not data):
             response_dict = {"message" : "Validation error, please make sure javascript is enabled for this site"}
             resp = make_response(response_dict)
             resp.headers["status"] = 400
@@ -140,7 +162,7 @@ def play_game():
             move = data["move"]
         except KeyError as e:
             return(jsonify({"url" : False}), 400)
-        if(not move):
+        if (not move):
             return(jsonify({"url" : False}), 400)
         request = Post.query.filter_by(id=game_id).first()
         initiator = User.query.filter_by(id=request.user_id).first()
@@ -148,17 +170,32 @@ def play_game():
         winner = initiator.username
         if request.move == move:
             winner = 'Draw'
-        else if request.move == 'rock':
+        elif request.move == 'rock':
             if move == 'paper':
                 winner = responder.username
-        else if request.move == 'paper':
+        elif request.move == 'paper':
             if move == 'scissors':
                 winner = responder.username
-        else if request.move == 'scissors':
+        elif request.move == 'scissors':
             if move == 'rock':
                 winner = responder.username
-        game = Game(id = game_id, move = move, user_id = current_user.id, winner = winner)
+        game = Game(game_id = game_id, move = move, user_id = current_user.id, winner = winner)
         db.session.add(game)
         db.session.commit()
     return(jsonify('The winner is' + winner))
 
+@app.route("/fetch_challenges")
+def fetch_challenges():
+    # Fetch challenges from the database
+    challenges = Post.query.all()
+    # Convert challenges to a list of dictionaries
+    challenges_data = []
+    for challenge in challenges:
+        challenge_data = {
+            "id": challenge.id,
+            "name": challenge.move  # Assuming 'move' is the name of the challenge
+            # You can add more fields here as needed
+        }
+        challenges_data.append(challenge_data)
+    # Return challenges as JSON response
+    return jsonify(challenges_data)

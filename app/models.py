@@ -2,8 +2,7 @@ from datetime import datetime, timezone
 from typing import Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from app import db
-from app import login
+from app import app, db, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import md5
@@ -39,16 +38,29 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    stake: so.Mapped[int] = so.mapped_column(sa.Integer)
+    move: so.Mapped[str] = so.mapped_column(sa.String(120))
     timestamp: so.Mapped[datetime] = so.mapped_column(
         index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
                                                index=True)
 
     author: so.Mapped[User] = so.relationship(back_populates='posts')
-
+    winner: so.Mapped[str] = so.mapped_column(sa.String(120), default=None)
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Game(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    game_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id),
+                                               index=True)
+    move: so.Mapped[str] = so.mapped_column(sa.String(120))
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                               index=True)
+    winner: so.Mapped[str] = so.mapped_column(sa.ForeignKey(User.id),
+                                               index=True)
+    def __repr__(self):
+        return '<{}>'.format(self.body)
     
 @login.user_loader
 def load_user(id):

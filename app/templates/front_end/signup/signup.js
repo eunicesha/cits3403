@@ -14,7 +14,7 @@ $(document).ready(function() {
         if(this.value.length === 0) {
             displayText("Enter password", "error");
         }
-    
+    });
     // validates that confirm password is the same and isn't blank
     $("#password2").blur(function() {
         let $password = $("#password").val();
@@ -28,4 +28,3 @@ $(document).ready(function() {
         }
     });
 });
-  

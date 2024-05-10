@@ -1,8 +1,14 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% if polls|length == 0 %}
+        <h1>Heck, no polls have been created. Create one <a href = "{{url_for('create_poll')}}">here.</a></h1>
+    {% endif %}
+    {% for poll in polls %}
+        {% include "_poll.html" %}
     {% endfor %}
+    
+    <footer>
+        <hr>
+        See image and library references <a href = "{{url_for('references')}}">here</a>.
+    </footer>
 {% endblock %}
