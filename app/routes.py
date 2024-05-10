@@ -53,6 +53,19 @@ def game():
     open_challenges = Game.query.filter_by(status="Open").all()
     return render_template('game.html', open_challenges=open_challenges)
 
+@app.route("/fetch_challenges")
+def fetch_challenges():
+    # Fetch challenges from the database
+    challenges = Post.query.all()
+    challenges_data = []
+    for challenge in challenges:
+        challenge_data = {
+            "name": challenge.move
+            #"stake": challenge.stake
+        }
+        challenges_data.append(challenge_data)
+    return jsonify(challenges_data)
+
 @app.route("/create_challenge", methods=['GET', 'POST'])
 def create_challenge():
     form = MoveForm()
