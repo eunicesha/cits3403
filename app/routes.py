@@ -110,9 +110,9 @@ def accept_challenge(challenge_id):
             else:
                 current_user.points -= stake
                 opponent.points += stake
-
+            points = current_user.points
             db.session.commit()
-            flash(f'Challenge accepted! You {result}!', 'success')
+            flash(f'Challenge accepted! You {result} and now have {points}!', 'success')
             return redirect(url_for('page'))
         return render_template('accept_challenge.html', form=form)
     else:
