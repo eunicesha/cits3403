@@ -12,6 +12,7 @@ class User(UserMixin, db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True,
                                                 unique=True)
+    points: so.Mapped[int] = so.mapped_column(sa.Integer, default=0)
     email: so.Mapped[str] = so.mapped_column(sa.String(120), index=True,
                                              unique=True)
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
@@ -22,7 +23,6 @@ class User(UserMixin, db.Model):
     about_me: so.Mapped[Optional[str]] = so.mapped_column(sa.String(140))
     last_seen: so.Mapped[Optional[datetime]] = so.mapped_column(
         default=lambda: datetime.now(timezone.utc))
-    points: so.Mapped[Optional[int]] = so.mapped_column(sa.Integer, default=0)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -42,6 +42,7 @@ class Game (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), index=True)
     user_move = db.Column(db.String(10))
+    stake: so.Mapped[int] = so.mapped_column(sa.Integer)
     opponent_move = db.Column(db.String(10))
     result = db.Column(db.String(10), nullable=True)
     status = db.Column(db.String(10))
