@@ -1,94 +1,123 @@
-2024-05-06 21:46:21,088 ERROR: Exception on /index [GET] [in C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py:838]
+2024-05-10 06:48:38,891 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\routes.py", line 53, in index
-    return render_template('index.html', title='Home Page')
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 7, in block 'content'
-    <a href="{{url_for('page')}}">Game</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1084, in url_for
+  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
+    return redirect(url_for('/create_challenge'))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
     return self.handle_url_build_error(error, endpoint, values)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1073, in url_for
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
     rv = url_adapter.build(  # type: ignore[union-attr]
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'game'. Did you mean 'page' instead?
-2024-05-06 21:46:23,043 ERROR: Exception on /index [GET] [in C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py:838]
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
+2024-05-10 06:49:13,635 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\routes.py", line 53, in index
-    return render_template('index.html', title='Home Page')
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 7, in block 'content'
-    <a href="{{url_for('page')}}">Game</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1084, in url_for
+  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
+    return redirect(url_for('/create_challenge'))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
     return self.handle_url_build_error(error, endpoint, values)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1073, in url_for
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
     rv = url_adapter.build(  # type: ignore[union-attr]
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'game'. Did you mean 'page' instead?
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
+2024-05-10 06:49:43,922 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
+    return redirect(url_for('/create_challenge'))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
+2024-05-10 06:50:15,125 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
+    return redirect(url_for('/create_challenge'))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
+2024-05-10 06:55:47,527 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-10 07:08:25,636 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-10 07:10:00,496 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-10 07:11:27,250 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-10 07:12:25,273 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-10 07:20:49,362 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-10 07:22:11,130 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
