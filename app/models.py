@@ -22,7 +22,7 @@ class User(UserMixin, db.Model):
     about_me: so.Mapped[Optional[str]] = so.mapped_column(sa.String(140))
     last_seen: so.Mapped[Optional[datetime]] = so.mapped_column(
         default=lambda: datetime.now(timezone.utc))
-    points: so.Mapped[Optional[int]] = so.mapped_column(sa.Integer)
+    points: so.Mapped[Optional[int]] = so.mapped_column(sa.Integer, default=0)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
