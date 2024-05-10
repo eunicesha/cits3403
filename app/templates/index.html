@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="post-container">
-        <!-- Posts will be dynamically added here -->
-    </div>
-    <div>
+    No post at the moment!!
+    {% for post in posts %}
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+    <div >
         <a href="{{ url_for('page') }}">Back</a>
     </div>
 {% endblock %}
