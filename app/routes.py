@@ -71,7 +71,7 @@ def create_challenge():
     form = MoveForm()
     if form.validate_on_submit():
         # Save the user's move as an open challenge in the database
-        game = Game(user_id=current_user.id, user_move=form.move.data, status="Open")
+        game = Game(user_id=current_user.id, user_move=form.move.data, stake=form.stake.data, status="Open")
         db.session.add(game)
         db.session.commit()
         flash('Challenge created successfully!', 'success')
@@ -96,6 +96,21 @@ def accept_challenge(challenge_id):
             # Determine the result of the game
             result = play_game(challenge.user_move, challenge.opponent_move)
             challenge.result = result
+            
+            current_user = User.query.get(challenge.user_id)
+            opponent = User.query.get(challenge.opponent_id)
+
+            # Determine the stake of the game
+            stake = challenge.stake
+
+            # Update points based on the result
+            if result == 'success':
+                current_user.points += stake
+                opponent.points -= stake
+            else:
+                current_user.points -= stake
+                opponent.points += stake
+
             db.session.commit()
             flash(f'Challenge accepted! You {result}!', 'success')
             return redirect(url_for('page'))
