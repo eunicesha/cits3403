@@ -71,13 +71,14 @@ def create_challenge():
     form = MoveForm()
     if form.validate_on_submit():
         # Save the user's move as an open challenge in the database
-        game = Game(user_id=current_user.id, user_move=form.move.data, status="Open")
+        game = Game(user_id=current_user.id, user_move=form.move.data, stake=form.stake.data, status="Open")
         db.session.add(game)
         db.session.commit()
         flash('Challenge created successfully!', 'success')
         return redirect(url_for('page'))
     return render_template('create_challenge.html', form=form)
 
+    
 @app.route("/accept_challenge/<int:challenge_id>", methods=['GET', 'POST'])
 def accept_challenge(challenge_id):
     # Fetch the challenge from the database
@@ -96,14 +97,36 @@ def accept_challenge(challenge_id):
             # Determine the result of the game
             result = play_game(challenge.user_move, challenge.opponent_move)
             challenge.result = result
+            
+            current_user = User.query.get(challenge.user_id)
+            opponent = User.query.get(challenge.opponent_id)
+
+            # Determine the stake of the game
+            stake = challenge.stake
+
+            if result == 'success':
+                update_points(current_user, get_points(current_user)+stake)
+                update_points(opponent, get_points(opponent)-stake)
+            else:
+                update_points(current_user, get_points(current_user)-stake)
+                update_points(opponent, get_points(opponent)+stake)
+            points = get_points(current_user)
             db.session.commit()
-            flash(f'Challenge accepted! You {result}!', 'success')
+            flash(f'Challenge accepted! You {result} and now have {points}!', 'success')
             return redirect(url_for('page'))
         return render_template('accept_challenge.html', form=form)
     else:
         flash('Challenge not found!', 'danger')
         return redirect(url_for('game'))
+def get_points(username):
+    cursor.execute("SELECT points FROM users WHERE username=?", (username,))
+    points = cursor.fetchone()
+    return points[0] if points else 0
 
+# Function to update points of a user
+def update_points(username, points):
+    cursor.execute("UPDATE users SET points=? WHERE username=?", (points, username))
+    conn.commit()
 
 @app.route('/')
 @app.route('/index')
