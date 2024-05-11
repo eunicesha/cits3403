@@ -139,7 +139,7 @@ margin: 0;
     font-weight: 900;
     font-style: italic;
     font-size: 2rem;
-    color: #ba6bff;
+    color: #ff5f3b;
     line-height: .8;
 }
 
@@ -229,7 +229,7 @@ background-position: right;
 /* choice BUTTONS */
 .button-choice {
   appearance: button;
-  background-color: #ffa938;
+  background-color: #ff7c24;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
