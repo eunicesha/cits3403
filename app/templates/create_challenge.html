@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+<!-- Form to create a challenge -->
+{% block content %}
+
+<div class="container mt-4">
+    <h1>Create Challenge</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.move.label(class="form-label") }}
+            {{ form.move(class="form-select") }}
+            {{ form.submit() }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

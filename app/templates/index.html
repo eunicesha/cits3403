@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+    No post at the moment!!
     {% for post in posts %}
     <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}
+    <div >
+        <a href="{{ url_for('page') }}">Back</a>
+    </div>
 {% endblock %}

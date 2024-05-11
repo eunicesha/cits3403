@@ -1,25 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-    </form>
+<div class="container" style="display: flex; height: 100%;">
+    <div class="description" style="flex: 1; font-size: 2em; display: flex; justify-content: center; align-items: center; background-color: #FFCC99; margin: 50px; padding: 20px; border-radius: 10px;">
+        {% include "description.html" %}
+    </div>
+    <div class="signin" style="flex: 1; font-size: 2em; display: flex; justify-content: center; align-items: center; background-color: #CCCCCC; margin: 50px; padding: 20px; border-radius: 10px;">
+        <h1>Sign In</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+            <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+        </form>
+    </div>
+</div>
 {% endblock %}

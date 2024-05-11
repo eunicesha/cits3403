@@ -35,7 +35,16 @@ class User(UserMixin, db.Model):
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
-    
+
+ #game records    
+class Game (db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id), index=True)
+    user_move = db.Column(db.String(10))
+    opponent_move = db.Column(db.String(10))
+    result = db.Column(db.String(10), nullable=True)
+    status = db.Column(db.String(10))
+       
 
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)

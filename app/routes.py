@@ -1,20 +1,19 @@
+from euniceblog import play_game
 from flask import render_template, flash, redirect, url_for, request
 from app import app
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, MoveForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import Game, User
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
 
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('page'))
     
     form = LoginForm()
     if form.validate_on_submit():
@@ -29,7 +28,7 @@ def login():
         next_page = request.args.get('next')
         # validate the next URL to ensure redirects remain internal
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('page')
         return redirect(next_page)
     
     return render_template('login.html', title='Sign In', form=form)
@@ -38,7 +37,73 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('page'))
+
+#first page(after log in) view function
+@app.route('/page')
+@login_required
+def page():
+    return render_template('page.html', title='Home Page')
+
+#game view function
+@app.route('/game')
+@login_required
+def game():
+    # Fetch all open challenges from the database
+    open_challenges = Game.query.filter_by(status="Open").all()
+    return render_template('game.html', open_challenges=open_challenges)
+
+@app.route("/fetch_challenges")
+def fetch_challenges():
+    # Fetch challenges from the database
+    challenges = Post.query.all()
+    challenges_data = []
+    for challenge in challenges:
+        challenge_data = {
+            "name": challenge.move
+            #"stake": challenge.stake
+        }
+        challenges_data.append(challenge_data)
+    return jsonify(challenges_data)
+
+@app.route("/create_challenge", methods=['GET', 'POST'])
+def create_challenge():
+    form = MoveForm()
+    if form.validate_on_submit():
+        # Save the user's move as an open challenge in the database
+        game = Game(user_id=current_user.id, user_move=form.move.data, status="Open")
+        db.session.add(game)
+        db.session.commit()
+        flash('Challenge created successfully!', 'success')
+        return redirect(url_for('page'))
+    return render_template('create_challenge.html', form=form)
+
+@app.route("/accept_challenge/<int:challenge_id>", methods=['GET', 'POST'])
+def accept_challenge(challenge_id):
+    # Fetch the challenge from the database
+    challenge = Game.query.get(challenge_id)
+    if challenge:
+        # Check if the challenge is not created by the current user
+        if challenge.user_id == current_user.id:
+            flash('You cannot accept your own challenge!', 'danger')
+            return redirect(url_for('game'))
+        
+        form = MoveForm()
+        if form.validate_on_submit():
+            # Update the challenge with the opponent's move and change status to "Closed"
+            challenge.opponent_move = form.move.data
+            challenge.status = "Closed"
+            # Determine the result of the game
+            result = play_game(challenge.user_move, challenge.opponent_move)
+            challenge.result = result
+            db.session.commit()
+            flash(f'Challenge accepted! You {result}!', 'success')
+            return redirect(url_for('page'))
+        return render_template('accept_challenge.html', form=form)
+    else:
+        flash('Challenge not found!', 'danger')
+        return redirect(url_for('game'))
+
 
 @app.route('/')
 @app.route('/index')
