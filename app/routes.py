@@ -78,6 +78,7 @@ def create_challenge():
         return redirect(url_for('page'))
     return render_template('create_challenge.html', form=form)
 
+    
 @app.route("/accept_challenge/<int:challenge_id>", methods=['GET', 'POST'])
 def accept_challenge(challenge_id):
     # Fetch the challenge from the database
@@ -103,14 +104,13 @@ def accept_challenge(challenge_id):
             # Determine the stake of the game
             stake = challenge.stake
 
-            # Update points based on the result
             if result == 'success':
-                current_user.points += stake
-                opponent.points -= stake
+                update_points(current_user, get_points(current_user)+stake)
+                update_points(opponent, get_points(opponent)-stake)
             else:
-                current_user.points -= stake
-                opponent.points += stake
-            points = current_user.points
+                update_points(current_user, get_points(current_user)-stake)
+                update_points(opponent, get_points(opponent)+stake)
+            points = get_points(current_user)
             db.session.commit()
             flash(f'Challenge accepted! You {result} and now have {points}!', 'success')
             return redirect(url_for('page'))
@@ -118,7 +118,15 @@ def accept_challenge(challenge_id):
     else:
         flash('Challenge not found!', 'danger')
         return redirect(url_for('game'))
+def get_points(username):
+    cursor.execute("SELECT points FROM users WHERE username=?", (username,))
+    points = cursor.fetchone()
+    return points[0] if points else 0
 
+# Function to update points of a user
+def update_points(username, points):
+    cursor.execute("UPDATE users SET points=? WHERE username=?", (points, username))
+    conn.commit()
 
 @app.route('/')
 @app.route('/index')
