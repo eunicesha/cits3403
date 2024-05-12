@@ -15,6 +15,13 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
+# def create_app(config):
+     #app = Flask(__name__)
+     #app.config.from_object(Config)
+     # db.init_app(app)
+     # from app.blueprints import main 
+     # app.register_blueprint(main)
+     #return app
 
 if not app.debug:
     if app.config['MAIL_SERVER']:

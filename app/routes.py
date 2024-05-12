@@ -1,15 +1,17 @@
 from euniceblog import play_game
-from flask import render_template, flash, redirect, url_for, request
+from flask import jsonify, render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm, MoveForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import Game, User
+from app.models import Game, Post, User
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
 
+
+# change all @app.route to @main.route + url_for(main."example")
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
