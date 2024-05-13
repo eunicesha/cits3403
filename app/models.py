@@ -19,6 +19,8 @@ class User(UserMixin, db.Model):
     posts: so.WriteOnlyMapped['Post'] = so.relationship(
         back_populates='author')
     
+    points: so.Mapped[int] = so.mapped_column(sa.Integer, default = 0)
+    
     about_me: so.Mapped[Optional[str]] = so.mapped_column(sa.String(140))
     last_seen: so.Mapped[Optional[datetime]] = so.mapped_column(
         default=lambda: datetime.now(timezone.utc))
@@ -39,17 +41,29 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    stake: so.Mapped[int] = so.mapped_column(sa.Integer)
+    move: so.Mapped[str] = so.mapped_column(sa.String(120))
     timestamp: so.Mapped[datetime] = so.mapped_column(
         index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
                                                index=True)
 
     author: so.Mapped[User] = so.relationship(back_populates='posts')
-
+    winner: so.Mapped[str] = so.mapped_column(sa.String(120)),
+                                               default = Null)
     def __repr__(self):
         return '<Post {}>'.format(self.body)
-    
+
+class Game(db.Model):
+    id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id),
+                                               index=True)
+    move: so.Mapped[str] = so.mapped_column(sa.String(120))
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                               index=True)
+    winner: move: so.Mapped[str] = so.mapped_column(sa.String(120))
+    def __repr__(self):
+        return '<{}>'.format(self.body)
+
 @login.user_loader
 def load_user(id):
     return db.session.get(User, int(id))
