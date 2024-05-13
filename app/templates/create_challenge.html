@@ -2,17 +2,15 @@
 
 <!-- Form to create a challenge -->
 {% block content %}
-
 <div class="container mt-4">
-    <h1>Create Challenge</h1>
+    <h1 class="modal-title" id="createChallengeModalLabel">Create Challenge</h1>
     <form method="POST">
         {{ form.hidden_tag() }}
-        <div>
+        <div class="modal-body">
             {{ form.move.label(class="form-label") }}
             {{ form.move(class="form-select") }}
             {{ form.submit() }}
         </div>
     </form>
 </div>
-
 {% endblock %}

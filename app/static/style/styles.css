@@ -1,0 +1,280 @@
+:root {
+    --gradient: linear-gradient(90deg, #ee6352, purple, #ee6352);
+  }
+  body {
+      font-family: basic-sans, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.125em;
+      line-height: 1.6;
+      color: #333;
+      background: #ddd;
+      background-size: 300%;
+      background-image: var(--gradient);
+      animation: bg-animation 25s infinite;
+    }
+  
+  
+  
+  
+  .container {
+      display: flex;
+      justify-content: center; 
+      flex-direction: column; 
+      align-items: center;
+      min-height: 10vh; 
+      padding-top: 20px;
+      flex-wrap: wrap;
+  }
+  
+  #challenges .card {
+      width: 353px;
+      height: 160px;
+      margin: 10px;
+      display: flex;
+  
+  }
+  
+  #challenges .card-body p {
+      font-size: 14px;
+  }
+  
+  button {
+      margin-top: 20px;
+  }
+  
+  .challenge-btn{
+      transition: ease-out 0.3s;
+  }
+  
+  .challenge-btn:hover{
+      box-shadow: inset 250px 0 0 0 #E31C1C;
+      cursor: pointer;
+      color:black
+  }
+  
+  
+  .navbar {
+      display: flex;
+      justify-content: space-between; 
+      align-items: center; 
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+  }
+  
+  
+  .align-right-buttons{
+      margin-right: 20px; 
+      
+  }
+  
+  
+  .navbar-nav.center-buttons {
+      flex:1;
+      justify-content: center;
+      display: flex;  
+  }
+  
+  .nav-acc-item{
+      margin-right:10px;
+      
+  } 
+  
+  
+  @keyframes bg-animation {
+      0% {background-position: left}
+      50% {background-position: right}
+      100% {background-position: left}
+  }
+    
+  .content {
+  background: white;
+  width: 70vw;
+  padding: 3em;
+  box-shadow: 0 0 3em rgba(0,0,0,.15);
+  }
+  
+  .title {
+  margin: 0 0 .5em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1rem;
+  color: #ee6352;
+  line-height: .8;
+  margin: 0;
+  
+  }
+  
+  .titlebuttons{
+      text-transform: uppercase;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #ffffff;
+      line-height: .8;
+      align-self: center;
+  }
+  
+  #acceptChallengeModalLabel{
+      text-transform: uppercase;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 2rem;
+      color: #ba6bff;
+      line-height: .8;
+  }
+  
+  #createChallengeModalLabel{
+      text-transform: uppercase;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 2rem;
+      color: #ff4040;
+      line-height: .8;
+  }
+  
+  
+  
+  .gradient{
+  background-image: var(--gradient);
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  background-size: 300%;
+  transition: background-position 1s;
+  
+  }
+  
+  .textoutline{
+      -webkit-text-stroke: 1px white;
+  }
+  
+  .title:hover {
+  background-position: right;
+  }
+  
+  
+  .fun {
+  color: white;
+  border: 0;
+  cursor: pointer;
+  padding: .5em 1.25em;
+  background: linear-gradient(90deg, #ee6352, purple, #ee6352);
+  background-size: 300%;
+  background-position: left;
+  transition: background-position 350ms;
+  }
+  
+  .fun:hover {
+  background-position: right;
+  } 
+  
+  
+  .modal-dialog {
+      display: flex;
+      align-items: center;
+      min-height: calc(100% - 1rem);
+      max-width: 75%; 
+      margin: auto; 
+  }
+  
+  /* centering and sizing the modal content */
+  .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      min-width: 300px;
+  }
+  
+  /* buttons centred */
+  .modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 250px; 
+  }
+  
+  
+  .modal-body button {
+      width: 200px; 
+      height: 50px;
+      margin: 10px;
+      padding: 10px;
+  }
+  
+  
+  
+  /* BUTTONS */
+  .button-19 {
+    appearance: button;
+    background-color: #ffa938;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round,sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+  }
+  
+  .button-19:after {
+    background-clip: padding-box;
+    background-color: #ff3c3c;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+  
+  .button-19:main,
+  .button-19:focus {
+    user-select: auto;
+  }
+  
+  .button-19:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+  }
+  
+  .button-19:disabled {
+    cursor: auto;
+  }
+  
+  .button-19:active {
+    border-width: 4px 0 0;
+    background: none;
+  }

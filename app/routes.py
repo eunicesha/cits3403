@@ -37,13 +37,13 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('page'))
+    return redirect(url_for('login'))
 
 #first page(after log in) view function
 @app.route('/page')
 @login_required
 def page():
-    return render_template('page.html', title='Home Page')
+    return render_template('index.html', title='Home Page')
 
 #game view function
 @app.route('/game')
@@ -51,7 +51,7 @@ def page():
 def game():
     # Fetch all open challenges from the database
     open_challenges = Game.query.filter_by(status="Open").all()
-    return render_template('game.html', open_challenges=open_challenges)
+    return render_template('index.html', open_challenges=open_challenges)
 
 @app.route("/fetch_challenges")
 def fetch_challenges():
@@ -75,7 +75,7 @@ def create_challenge():
         db.session.add(game)
         db.session.commit()
         flash('Challenge created successfully!', 'success')
-        return redirect(url_for('page'))
+        return redirect(url_for('index'))
     return render_template('create_challenge.html', form=form)
 
 @app.route("/accept_challenge/<int:challenge_id>", methods=['GET', 'POST'])
@@ -86,7 +86,7 @@ def accept_challenge(challenge_id):
         # Check if the challenge is not created by the current user
         if challenge.user_id == current_user.id:
             flash('You cannot accept your own challenge!', 'danger')
-            return redirect(url_for('game'))
+            return redirect(url_for('index'))
         
         form = MoveForm()
         if form.validate_on_submit():
@@ -98,11 +98,11 @@ def accept_challenge(challenge_id):
             challenge.result = result
             db.session.commit()
             flash(f'Challenge accepted! You {result}!', 'success')
-            return redirect(url_for('page'))
+            return redirect(url_for('index'))
         return render_template('accept_challenge.html', form=form)
     else:
         flash('Challenge not found!', 'danger')
-        return redirect(url_for('game'))
+        return redirect(url_for('index'))
 
 
 @app.route('/')

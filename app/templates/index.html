@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    No post at the moment!!
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
-    <div >
-        <a href="{{ url_for('page') }}">Back</a>
+{% if open_challenges|length == 0 %}
+<h1 class="title gradient textoutline" style="text-align: center; text-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;">no games have been created!</h1>
+{% endif%}
+{% for challenge in open_challenges %}
+    div class="container mt-4">
+        <div id="challenges" class="row">
+            Challenge ID: {{ challenge.id }}
+        </div>
+        <div>
+            <a href="{{ url_for('accept_challenge', challenge_id=challenge.id) }}">Accept Challenge</a>
     </div>
+</div>
+{% endfor %}
+<a class="btn btn-primary fun center-buttons" href="{{ url_for('create_challenge') }}">Create Challenge</a>
 {% endblock %}
