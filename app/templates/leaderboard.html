@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Leaderboard</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
     <h1>Leaderboard</h1>
     <ul>
         {% for user in users %}
         <li>{{ user.username }} - {{ user.points }} points</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+</div>
+
+
+{% endblock %}
