@@ -39,12 +39,14 @@ class User(UserMixin, db.Model):
  #game records    
 class Game (db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(User.id), index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id, name='game_user_fk'), index=True)
+    opponent_id = db.Column(db.Integer, db.ForeignKey(User.id, name='game_opponent_fk'), index=True)
     user_move = db.Column(db.String(10))
     opponent_move = db.Column(db.String(10))
     result = db.Column(db.String(10), nullable=True)
     status = db.Column(db.String(10))
-       
+    user = db.relationship('User', foreign_keys=[user_id], backref='games_as_challenger', lazy=True)
+    opponent = db.relationship('User', foreign_keys=[opponent_id], backref='opponent_games', lazy=True)
 
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)

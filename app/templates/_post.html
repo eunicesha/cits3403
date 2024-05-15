@@ -1,6 +1,29 @@
 <table>
     <tr valign="top">
-        <td><img src="{{ post.author.avatar(36) }}"></td>
-        <td>{{ post.author.username }} says:<br>{{ post.body }}</td>
+        <td>
+            {% if game.status == 'Open' %}
+                You have an open game! You played {{ game.user_move }}
+            {% elif game.status == 'Closed' %}
+                {% if game.user.username == user.username %}
+                    {% if game.result == 'Lost' %}
+                        You won against
+                    {% elif game.result == 'Won' %}
+                        You lost against
+                    {% elif game.result == 'Draw' %}
+                        It was a draw with
+                    {% endif %}
+                    {{ game.opponent.username }}
+                {% else %}   
+                    {% if game.result == 'Lost' %}
+                        You lost against
+                    {% elif game.result == 'Won' %}
+                        You won against
+                    {% elif game.result == 'Draw' %}
+                        It was a draw with
+                    {% endif %}
+                    {{ game.user.username }}
+                {% endif %}
+            {% endif %}
+        </td>
     </tr>
 </table>

@@ -1,123 +1,135 @@
-2024-05-10 06:48:38,891 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+2024-05-15 05:33:30,180 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
-    return redirect(url_for('/create_challenge'))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
-2024-05-10 06:49:13,635 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/workspaces/cits3403/app/routes.py", line 143, in user
+    return render_template('user.html', user=user, games=games)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
+    {% include '_post.html' %}
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/_post.html", line 6, in template
+    {% if game.user.username == user.username}
+jinja2.exceptions.TemplateSyntaxError: unexpected '}'
+2024-05-15 05:33:55,427 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:33:58,127 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
-    return redirect(url_for('/create_challenge'))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
-2024-05-10 06:49:43,922 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/workspaces/cits3403/app/routes.py", line 143, in user
+    return render_template('user.html', user=user, games=games)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
+    {% include '_post.html' %}
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/_post.html", line 25, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2024-05-15 05:34:04,512 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
-    return redirect(url_for('/create_challenge'))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
-2024-05-10 06:50:15,125 ERROR: Exception on /create_challenge [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/workspaces/cits3403/app/routes.py", line 143, in user
+    return render_template('user.html', user=user, games=games)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
+    {% include '_post.html' %}
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/_post.html", line 25, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2024-05-15 05:34:24,613 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:34:27,124 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 68, in create_challenge
-    return redirect(url_for('/create_challenge'))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint '/create_challenge'. Did you mean 'create_challenge' instead?
-2024-05-10 06:55:47,527 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
-2024-05-10 07:08:25,636 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
-2024-05-10 07:10:00,496 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
-2024-05-10 07:11:27,250 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
-2024-05-10 07:12:25,273 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
-2024-05-10 07:20:49,362 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
-2024-05-10 07:22:11,130 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/workspaces/cits3403/app/routes.py", line 143, in user
+    return render_template('user.html', user=user, games=games)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
+    {% include '_post.html' %}
+  File "/workspaces/cits3403/app/templates/_post.html", line 5, in top-level template code
+    {% if challenge.status == 'Closed' %}
+  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'challenge' is undefined
+2024-05-15 05:34:41,960 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]

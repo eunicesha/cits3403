@@ -1,62 +1,120 @@
-2024-05-06 21:46:40,055 ERROR: Exception on /index [GET] [in C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py:838]
+2024-05-14 00:43:44,043 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 00:45:50,674 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:04:06,003 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:14:34,906 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:18:36,399 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:24:38,473 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:26:48,689 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:29:38,403 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:30:05,035 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:31:04,771 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:32:21,281 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:32:37,407 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:32:57,151 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:34:16,265 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:35:32,707 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:36:06,010 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:36:15,980 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:36:27,005 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:37:50,551 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 03:38:28,968 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-14 05:21:58,679 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 04:59:31,942 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 04:59:39,267 ERROR: Exception on / [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\routes.py", line 53, in index
-    return render_template('index.html', title='Home Page')
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\app\templates\index.html", line 7, in block 'content'
-    <a href="{{url_for('page')}}">Game</a>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1084, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\flask\app.py", line 1073, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\HP Laptop\Desktop\Project\cits3403\venv\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'game'. Did you mean 'page' instead?
-2024-05-06 21:48:31,214 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 21:55:47,147 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 21:57:03,637 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 21:58:11,388 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:00:25,595 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:00:51,391 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:01:24,619 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:03:17,669 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:04:16,952 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:13:53,832 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:17:07,239 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:18:36,432 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:20:17,625 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-06 22:21:17,613 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\Project\cits3403\app\__init__.py:46]
-2024-05-10 06:21:40,363 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+  File "/workspaces/cits3403/app/routes.py", line 114, in index
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.player)).all()
+NameError: name 'joinedload' is not defined
+2024-05-15 05:00:25,115 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:00:26,895 ERROR: Exception on / [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/workspaces/cits3403/app/routes.py", line 115, in index
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.player)).all()
+AttributeError: type object 'Game' has no attribute 'player'
+2024-05-15 05:01:56,933 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:01:58,639 ERROR: Exception on / [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/workspaces/cits3403/app/routes.py", line 115, in index
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user_id)).all()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2191, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1422, in execute
+    return meth(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1636, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 702, in _compile_w_cache
+    compiled_sql = self._compiler(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 315, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 1429, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 870, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 915, in process
+    return obj._compiler_dispatch(self, **kwargs)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 4674, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/base.py", line 684, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 1162, in create_for_statement
+    self._setup_for_generate()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 1276, in _setup_for_generate
+    entity.setup_compile_state(self)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 2750, in setup_compile_state
+    loading._setup_entity_query(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 776, in _setup_entity_query
+    value.setup(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/interfaces.py", line 1050, in setup
+    strat = self._get_strategy(loader.strategy)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/interfaces.py", line 1033, in _get_strategy
+    cls = self._strategy_lookup(self, *key)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/interfaces.py", line 1137, in _strategy_lookup
+    raise orm_exc.LoaderStrategyException(
+sqlalchemy.orm.exc.LoaderStrategyException: Can't apply "joined loader" strategy to property "Game.user_id", which is a "column property"; this loader strategy is intended to be used with a "relationship property".
+2024-05-15 05:05:29,384 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:05:53,603 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:06:11,899 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:06:23,926 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:06:32,381 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]

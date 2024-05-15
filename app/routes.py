@@ -1,5 +1,5 @@
 from euniceblog import play_game
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app
 from app.forms import LoginForm, MoveForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -9,6 +9,8 @@ from app.models import Game, User
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
+from sqlalchemy.orm import joinedload
+from sqlalchemy import or_, and_
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -43,7 +45,7 @@ def logout():
 @app.route('/page')
 @login_required
 def page():
-    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.player)).all()
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
     return render_template('index.html', open_challenges=open_challenges, title='Home Page')
 
 #game view function
@@ -51,7 +53,7 @@ def page():
 @login_required
 def game():
     # Fetch all open challenges from the database
-    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.player)).all()
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
     return render_template('index.html', open_challenges=open_challenges)
 
 @app.route("/fetch_challenges")
@@ -97,8 +99,9 @@ def accept_challenge(challenge_id):
             # Determine the result of the game
             result = play_game(challenge.user_move, challenge.opponent_move)
             challenge.result = result
+            challenge.opponent_id = current_user.id
             db.session.commit()
-            flash(f'Challenge accepted! You {result}!', 'success')
+            flash(f'You {result}!', 'success')
             return redirect(url_for('index'))
         return render_template('accept_challenge.html', form=form)
     else:
@@ -110,8 +113,9 @@ def accept_challenge(challenge_id):
 @app.route('/index')
 @login_required
 def index():
-    # logic needed
-    return render_template('index.html', title='Home Page')
+    # Fetch all open challenges from the database
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
+    return render_template('index.html', open_challenges=open_challenges, title='Home Page')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -131,8 +135,13 @@ def register():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = Game.query.filter_by(status="Open", user_id=user.id).all()
-    return render_template('user.html', user=user, posts=posts)
+    games = Game.query.filter(
+            or_(
+                Game.user_id == current_user.id,
+                Game.opponent_id == current_user.id
+            )
+        ).all()
+    return render_template('user.html', user=user, games=games)
 
 @app.before_request
 def before_request():
