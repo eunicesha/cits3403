@@ -7,7 +7,7 @@
 {% for challenge in open_challenges %}
     div class="container mt-4">
         <div id="challenges" class="row">
-            Challenge ID: {{ challenge.id }}
+            {{ challenge.player.username  }} wants to play!
         </div>
         <div>
             <a href="{{ url_for('accept_challenge', challenge_id=challenge.id) }}">Accept Challenge</a>
