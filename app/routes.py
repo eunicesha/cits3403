@@ -43,7 +43,7 @@ def logout():
 @app.route('/page')
 @login_required
 def page():
-    open_challenges = Game.query.filter_by(status="Open").all()
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.player)).all()
     return render_template('index.html', open_challenges=open_challenges, title='Home Page')
 
 #game view function
@@ -51,7 +51,7 @@ def page():
 @login_required
 def game():
     # Fetch all open challenges from the database
-    open_challenges = Game.query.filter_by(status="Open").all()
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.player)).all()
     return render_template('index.html', open_challenges=open_challenges)
 
 @app.route("/fetch_challenges")
@@ -131,10 +131,7 @@ def register():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
+    posts = Game.query.filter_by(status="Open", user_id=user.id).all()
     return render_template('user.html', user=user, posts=posts)
 
 @app.before_request
