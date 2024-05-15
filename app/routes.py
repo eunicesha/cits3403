@@ -1,11 +1,11 @@
 from euniceblog import play_game
-from flask import render_template, flash, redirect, url_for, request
+from flask import jsonify, render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm, MoveForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import Game, User
+from app.models import Game, Post, User
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
@@ -94,7 +94,7 @@ def accept_challenge(challenge_id):
             challenge.opponent_move = form.move.data
             challenge.status = "Closed"
             # Determine the result of the game
-            result = play_game(challenge.user_move, challenge.opponent_move)
+            result = play_game(challenge.user_id, challenge.user_move, current_user.id, form.move.data)
             challenge.result = result
             db.session.commit()
             flash(f'Challenge accepted! You {result}!', 'success')
@@ -157,3 +157,9 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+@app.route('/leaderboard')
+def leaderboard():
+    users = User.query.order_by(User.points.desc()).all()  # Order by points descending
+    return render_template('leaderboard.html', users=users)
+

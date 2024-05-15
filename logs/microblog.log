@@ -6,3 +6,45 @@
 2024-05-10 07:37:45,173 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
 2024-05-10 07:39:58,473 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
 2024-05-10 07:50:17,335 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+2024-05-13 16:16:37,256 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:21:45,608 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:22:11,327 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:22:32,545 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:22:41,004 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:23:06,896 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:24:02,051 ERROR: Exception on /accept_challenge/20 [POST] [in /Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/hoiyensha/rock paper/cits3403/app/routes.py", line 97, in accept_challenge
+    result = play_game(challenge.user_id, challenge.user_move, current_user.id, form.move.data)
+  File "/Users/hoiyensha/rock paper/cits3403/euniceblog.py", line 26, in play_game
+    add_points(user_id, -1)  # User loses, loses 1 point
+  File "/Users/hoiyensha/rock paper/cits3403/euniceblog.py", line 35, in add_points
+    user.points += points
+TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
+2024-05-13 16:24:06,881 ERROR: Exception on /accept_challenge/20 [POST] [in /Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/hoiyensha/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/hoiyensha/rock paper/cits3403/app/routes.py", line 97, in accept_challenge
+    result = play_game(challenge.user_id, challenge.user_move, current_user.id, form.move.data)
+  File "/Users/hoiyensha/rock paper/cits3403/euniceblog.py", line 22, in play_game
+    add_points(user_id, 1)  # User wins, gain 1 point
+  File "/Users/hoiyensha/rock paper/cits3403/euniceblog.py", line 35, in add_points
+    user.points += points
+TypeError: unsupported operand type(s) for +=: 'NoneType' and 'int'
+2024-05-13 16:41:16,792 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
+2024-05-13 16:46:36,862 INFO: Microblog startup [in /Users/hoiyensha/rock paper/cits3403/app/__init__.py:46]
