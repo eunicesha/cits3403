@@ -43,7 +43,8 @@ def logout():
 @app.route('/page')
 @login_required
 def page():
-    return render_template('index.html', title='Home Page')
+    open_challenges = Game.query.filter_by(status="Open").all()
+    return render_template('index.html', open_challenges=open_challenges, title='Home Page')
 
 #game view function
 @app.route('/game')
