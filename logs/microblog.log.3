@@ -1,41 +1,107 @@
-2024-05-15 05:16:04,539 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
+2024-05-15 05:30:33,909 ERROR: Exception on / [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2423, in _determine_joins
+    self.primaryjoin = join_condition(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/util.py", line 123, in join_condition
+    return Join._join_condition(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/selectable.py", line 1343, in _join_condition
+    cls._joincond_trim_constraints(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/selectable.py", line 1488, in _joincond_trim_constraints
+    raise exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'game' and 'user'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/workspaces/cits3403/app/routes.py", line 137, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
-    {% block content %}{% endblock %}
-  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
-    {% include '_post.html' %}
-  File "/workspaces/cits3403/app/templates/_post.html", line 3, in top-level template code
-    <td>{{ game.user.username }}'s game is<br>{{ game.status }}
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'game' is undefined
-2024-05-15 05:16:44,091 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:18:34,470 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:18:38,608 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:18:43,318 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:20:49,050 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:20:51,447 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:20:54,102 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:30:31,603 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 878, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1253, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "/workspaces/cits3403/app/routes.py", line 147, in before_request
+    if current_user.is_authenticated:
+  File "/home/codespace/.local/lib/python3.10/site-packages/werkzeug/local.py", line 311, in __get__
+    obj = instance._get_current_object()
+  File "/home/codespace/.local/lib/python3.10/site-packages/werkzeug/local.py", line 515, in _get_current_object
+    return get_name(local())
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/workspaces/cits3403/app/models.py", line 66, in load_user
+    return db.session.get(User, int(id))
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 1060, in get
+    return self._proxied.get(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3637, in get
+    return self._get_impl(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 3817, in _get_impl
+    return db_load_fn(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2191, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1422, in execute
+    return meth(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1636, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 702, in _compile_w_cache
+    compiled_sql = self._compiler(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 315, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 1429, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 870, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 915, in process
+    return obj._compiler_dispatch(self, **kwargs)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/compiler.py", line 4674, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/sql/base.py", line 684, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 1091, in create_for_statement
+    _QueryEntity.to_compile_state(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 2546, in to_compile_state
+    _MapperEntity(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 2626, in __init__
+    entity._post_inspect
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 4203, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 4244, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/mapper.py", line 2405, in _post_configure_properties
+    prop.init()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/interfaces.py", line 584, in init
+    self.do_init()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 1644, in do_init
+    self._setup_join_conditions()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 1884, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2310, in __init__
+    self._determine_joins()
+  File "/home/codespace/.local/lib/python3.10/site-packages/sqlalchemy/orm/relationships.py", line 2467, in _determine_joins
+    raise sa_exc.AmbiguousForeignKeysError(
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship Game.user - there are multiple foreign key paths linking the tables.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference to the parent table.
+2024-05-15 05:31:57,312 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:32:01,147 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:32:04,095 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:32:06,583 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:33:22,748 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]

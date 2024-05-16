@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Leaderboard</h1>
+<table>
+    <tr>
+        <td>User</td>
+        <td>Points</td>
+    </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            {% if user.points == None %}
+            <td>0</td>
+            {% else %}
+                <td>{{ user.points }}</td>
+            {% endif %}
+        {% endfor %}
+</table>
+
+
+{% endblock %}

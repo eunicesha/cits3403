@@ -1,38 +1,4 @@
-2024-05-15 05:06:47,033 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:06:53,299 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:06:56,676 ERROR: Exception on / [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/workspaces/cits3403/app/routes.py", line 116, in index
-    return render_template('index.html', open_challenges=open_challenges, title='Home Page')
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/workspaces/cits3403/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
-    {% block content %}{% endblock %}
-  File "/workspaces/cits3403/app/templates/index.html", line 9, in block 'content'
-    {{ challenge.player.username  }} wants to play!
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Game object' has no attribute 'player'
-2024-05-15 05:07:42,863 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:07:49,203 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
+2024-05-15 05:16:04,539 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
 Traceback (most recent call last):
   File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
     response = self.full_dispatch_request()
@@ -61,76 +27,15 @@ Traceback (most recent call last):
   File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
     {% include '_post.html' %}
   File "/workspaces/cits3403/app/templates/_post.html", line 3, in top-level template code
-    <td><img src="{{ post.author.avatar(36) }}"></td>
+    <td>{{ game.user.username }}'s game is<br>{{ game.status }}
   File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 485, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Game object' has no attribute 'author'
-2024-05-15 05:15:13,812 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:15:17,362 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/workspaces/cits3403/app/routes.py", line 137, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
-    {% block content %}{% endblock %}
-  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
-    {% include '_post.html' %}
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/workspaces/cits3403/app/templates/_post.html", line 14, in template
-    {% endif %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'.
-2024-05-15 05:15:31,229 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
-2024-05-15 05:15:34,552 ERROR: Exception on /user/brandon [GET] [in /home/codespace/.local/lib/python3.10/site-packages/flask/app.py:838]
-Traceback (most recent call last):
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "/workspaces/cits3403/app/routes.py", line 137, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
-    rv = template.render(context)
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/workspaces/cits3403/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/workspaces/cits3403/app/templates/base.html", line 47, in top-level template code
-    {% block content %}{% endblock %}
-  File "/workspaces/cits3403/app/templates/user.html", line 18, in block 'content'
-    {% include '_post.html' %}
-  File "/workspaces/cits3403/app/templates/_post.html", line 3, in top-level template code
-    <td><img src="{{ post.author.avatar(36) }}"></td>
-  File "/home/codespace/.local/lib/python3.10/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.models.Game object' has no attribute 'author'
-2024-05-15 05:16:02,078 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+jinja2.exceptions.UndefinedError: 'game' is undefined
+2024-05-15 05:16:44,091 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:18:34,470 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:18:38,608 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:18:43,318 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:20:49,050 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:20:51,447 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:20:54,102 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
+2024-05-15 05:30:31,603 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]

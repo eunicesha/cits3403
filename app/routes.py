@@ -11,6 +11,8 @@ from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from sqlalchemy.orm import joinedload
 from sqlalchemy import or_, and_
+import logging
+logging.basicConfig(level=logging.INFO)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -100,8 +102,19 @@ def accept_challenge(challenge_id):
             result = play_game(challenge.user_move, challenge.opponent_move)
             challenge.result = result
             challenge.opponent_id = current_user.id
+            if challenge.user.points is None:
+                challenge.user.points = 0
+            if challenge.opponent.points is None:
+                challenge.opponent.points = 0
+            if result == 'Lost':
+                challenge.user.points = challenge.user.points + 1
+                challenge.opponent.points = challenge.opponent.points - 1
+            elif result == "Won":
+                challenge.user.points = challenge.user.points - 1
+                challenge.opponent.points = challenge.opponent.points + 1
+            points = challenge.opponent.points
             db.session.commit()
-            flash(f'You {result}!', 'success')
+            flash(f'You {result}! You now have {points} points.', 'success')
             return redirect(url_for('index'))
         return render_template('accept_challenge.html', form=form)
     else:
@@ -121,7 +134,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data, email=form.email.data, points = 0)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -165,5 +178,7 @@ def edit_profile():
 
 @app.route('/leaderboard')
 def leaderboard():
-    users = User.query.order_by(User.points.desc()).all()  # Order by points descending
+    users = User.query.order_by(User.points.desc()).all()
+    for user in users:
+        logging.info(f'User: {user.username}, Points: {user.points}, Type: {type(user.points)}')
     return render_template('leaderboard.html', users=users)
