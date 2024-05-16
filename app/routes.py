@@ -12,7 +12,6 @@ from app.forms import EditProfileForm
 from sqlalchemy.orm import joinedload
 from sqlalchemy import or_, and_
 
-#user login view function
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -31,25 +30,31 @@ def login():
         next_page = request.args.get('next')
         # validate the next URL to ensure redirects remain internal
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('page')
         return redirect(next_page)
     
     return render_template('login.html', title='Sign In', form=form)
 
-#user logout view function
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('login'))
 
-#game view function
-@app.route('/')
-@app.route('/index')
+#first page(after log in) view function
+@app.route('/page')
 @login_required
-def index():
-    # Fetch all open challenges from the database
+def page():
     open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
     return render_template('index.html', open_challenges=open_challenges, title='Home Page')
+
+#game view function
+@app.route('/game')
+@login_required
+def game():
+    # Fetch all open challenges from the database
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
+    return render_template('game.html', open_challenges=open_challenges)
 
 @app.route("/fetch_challenges")
 def fetch_challenges():
@@ -64,7 +69,6 @@ def fetch_challenges():
         challenges_data.append(challenge_data)
     return jsonify(challenges_data)
 
-#create challenge view function
 @app.route("/create_challenge", methods=['GET', 'POST'])
 def create_challenge():
     form = MoveForm()
@@ -74,10 +78,9 @@ def create_challenge():
         db.session.add(game)
         db.session.commit()
         flash('Challenge created successfully!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('game'))
     return render_template('create_challenge.html', form=form)
 
-#accept challenge view function
 @app.route("/accept_challenge/<int:challenge_id>", methods=['GET', 'POST'])
 def accept_challenge(challenge_id):
     # Fetch the challenge from the database
@@ -86,7 +89,7 @@ def accept_challenge(challenge_id):
         # Check if the challenge is not created by the current user
         if challenge.user_id == current_user.id:
             flash('You cannot accept your own challenge!', 'danger')
-            return redirect(url_for('index'))
+            return redirect(url_for('game'))
         
         form = MoveForm()
         if form.validate_on_submit():
@@ -103,9 +106,15 @@ def accept_challenge(challenge_id):
         return render_template('accept_challenge.html', form=form)
     else:
         flash('Challenge not found!', 'danger')
-        return redirect(url_for('index'))
+        return redirect(url_for('game'))
 
-#new user register view function
+
+@app.route('/')
+@app.route('/index')
+@login_required
+def index():
+    return render_template('index.html', title='Roshambo\'d!')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
