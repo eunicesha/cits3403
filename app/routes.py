@@ -162,3 +162,8 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+@app.route('/leaderboard')
+def leaderboard():
+    users = User.query.order_by(User.points.desc()).all()  # Order by points descending
+    return render_template('leaderboard.html', users=users)
