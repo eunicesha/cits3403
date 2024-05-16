@@ -1,24 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hi, {{ current_user.username }}!</h1>
-
-<div class="container mt-4" style = "text-align: center">
-                <h1 class = "title gradient textoutline" style = "font-size: 5.5rem; padding: 10px">Roshambo'd!</h1>
-                <p class = "title gradient textoutline" style = "font-size: 2.3rem; padding: 10px">Challenge someone now or create your own.</p>
-            </div>
-
-{% if open_challenges|length == 0 %}
-<h1 style="font-size: 30; font-style: italic; color:rgb(246, 235, 235);text-align: center; text-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;">no games have been created!</h1>
-{% endif%}
-{% for challenge in open_challenges %}
-    <div class="modal-content box container mt-4">
-        {{ challenge.user.username  }} wants to play!
-            <a href="{{ url_for('accept_challenge', challenge_id=challenge.id) }}">Accept Challenge</a>
+<div>
+    <div class="game-description">
+        <h2>Welcome to Roshambo'd!</h2>
+        <p>
+            <strong>Roshambo'd </strong> is an exciting game that allows users to create challenges and post them for others to participate in.
+        </p>
+        <p>
+            Challenge your friends, test your luck, and see who comes out victorious in this classic game of <span>Rock</span>, <span>Paper</span>, <span>Scissors</span>!
+        </p>
+        <div class="row justify-content-md-center" style="padding:15px">
+            {% if current_user.is_anonymous %}
+                <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('login') }}">Log in</a>
+            {% else %}
+                <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{url_for('game')}}">Play!</a>
+            {% endif %}
+        </div>
     </div>
-</div>
-{% endfor %}
-<div class="row justify-content-md-center" style="padding:15px">
-    <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('create_challenge') }}">Create Challenge</a>
 </div>
 {% endblock %}

@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container" style="display: flex; height: 100%;">
-    <div class="description" style="flex: 1; font-size: 2em; display: flex; justify-content: center; align-items: center; background-color: #FFCC99; margin: 50px; padding: 20px; border-radius: 10px;">
-        {% include "description.html" %}
-    </div>
     <div class="container" style="display: flex; height: 100%;">
         <div class="register" style="flex: 1; font-size: 2em; display: flex; justify-content: center; align-items: center; background-color: #CCCCCC; margin: 50px; padding: 20px; border-radius: 10px;">
             <h1>Register</h1>
@@ -41,5 +37,5 @@
                 <p>{{ form.submit() }}</p>
             </form>
         </div>
-</div>
+    </div>
 {% endblock %}
