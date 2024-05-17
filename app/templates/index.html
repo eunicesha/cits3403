@@ -3,13 +3,12 @@
 {% block content %}
 <div>
     <div class="game-description">
-        <h2>Welcome to Roshambo'd!</h2>
+        <h2 class = "title textoutline" style = "font-size: 50px; text-align: center; margin-bottom: 20px;">Rules</h2>
         <p>
-            <strong>Roshambo'd </strong> is an exciting game that allows users to create challenges and post them for others to participate in.
+            What is <span class="title text" style = "color: rgb(194, 129, 255);">ROSHAMBO'D</span>?
         </p>
-        <p>
-            Challenge your friends, test your luck, and see who comes out victorious in this classic game of <span>Rock</span>, <span>Paper</span>, <span>Scissors</span>!
-        </p>
+        <p>We like to think of it as competitive paper-scissors-rock</p>
+
         <div class="row justify-content-md-center" style="padding:15px">
             {% if current_user.is_anonymous %}
                 <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('login') }}">Log in</a>
