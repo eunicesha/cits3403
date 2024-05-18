@@ -1,6 +1,10 @@
-:root {
+:root{
     --gradient: linear-gradient(90deg, #ee6352, purple, #ee6352);
-  }
+    
+}
+
+
+
   body {
       font-family: basic-sans, sans-serif;
       min-height: 100vh;
@@ -437,15 +441,15 @@ span a {
 
 .custom-submit {
     display: block;
-    margin: 0 auto;  /* Center the button horizontally */
-    background-color: #ff5722; /* Change button color */
-    color: white;  /* Change text color */
-    border: none;  /* Remove border */
-    padding: 10px 20px;  /* Add padding */
-    border-radius: 5px;  /* Round the corners */
-    transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+    margin: 0 auto;  
+    background-color: #ff5722; 
+    color: white;  
+    border: none; 
+    padding: 10px 20px;  
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
     font-size: 2rem !important;
 }
 .custom-submit:hover {
-    background-color: #e64a19;  /* Darken the background color on hover */
+    background-color: #e64a19;  
 }

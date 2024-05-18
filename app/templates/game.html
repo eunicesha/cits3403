@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
+
 {% block content %}
 {% if open_challenges|length == 0 %}
 <h1 class="nogames">no games have been created!</h1>
 {% endif%}
+<div class="row justify-content-md-center" style="padding:15px">
+    <a class="bttn title create-btn" href="{{ url_for('create_challenge') }}">Create Challenge</a>
+</div>
 {% for challenge in open_challenges %}
+
     <div class="container mt-4 challenge-box">
         <div id="challenges" class="row title" >
             {{ challenge.user.username  }} wants to play!
@@ -13,7 +18,4 @@
         </div>
 </div>
 {% endfor %}
-<div class="row justify-content-md-center" style="padding:15px">
-    <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('create_challenge') }}">Create Challenge</a>
-</div>
 {% endblock %}
