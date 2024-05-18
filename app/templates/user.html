@@ -6,9 +6,9 @@
         <td style="padding-right: 20px;"><img src="{{ user.avatar(128) }}"></td>
         <td>
             <h1>User: {{ user.username }}</h1>
-            Points: {{ user.points }}
-            {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-            {% if user.last_seen %}<p style="margin-top: 10px;">Last seen on: {{ user.last_seen }}</p>{% endif %}
+            <div style="-webkit-text-stroke: 1.2px rgb(255, 190, 98)">Points: {{ user.points }}</div>
+            <div style="margin-top: 10px;">{% if user.about_me %}<p>About: {{ user.about_me }}</p>{% endif %}</div>
+            {% if user.last_seen %}<p style="margin-top: 1px;">Last seen on: {{ user.last_seen }}</p>{% endif %}
             {% if user == current_user %}
             <p><a href="{{ url_for('edit_profile') }}" class="editprofile">Edit your profile</a></p>{% endif %}
         </td>
