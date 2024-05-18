@@ -6,11 +6,33 @@
     <h1 class="create title textoutline">Accept Challenge</h1>
     <form method="POST">
         {{ form.hidden_tag() }}
-        <div>
-            {{ form.move.label(class="form-label") }}
-            {{ form.move(class="form-select") }}
-            {{ form.submit() }}
+        <div class="form-group">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                {% for subfield in form.move %}
+                <label class="btn btn-outline-primary btn-move">
+                    {{ subfield }}
+                    {{ subfield.label.text }}
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            {{ form.submit(class="btn btn-primary") }}
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const buttons = document.querySelectorAll('.btn-move');
+    
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                this.setAttribute('data-choice', this.querySelector('input').value);
+            });
+        });
+    });
+    </script>
 {% endblock %}

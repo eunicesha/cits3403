@@ -384,3 +384,46 @@ span a {
 		transform: translatey(0px);
 	}
 }
+
+
+/* rock paper scissors buttons */
+.btn-group-toggle .btn {
+    cursor: pointer;
+}
+
+.btn-group-toggle .btn input[type="radio"] {
+    display: none;
+}
+
+.btn-group-toggle .btn-move {
+    border-color: transparent;
+    background-color: #f0f0f0;
+    color: #000;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-group-toggle .btn-move:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-group-toggle .btn-move.active,
+.btn-group-toggle .btn-move:active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-group-toggle .btn-move.active[data-choice="rock"] {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.btn-group-toggle .btn-move.active[data-choice="paper"] {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.btn-group-toggle .btn-move.active[data-choice="scissors"] {
+    background-color: #4caf50;
+    color: #fff;
+}
