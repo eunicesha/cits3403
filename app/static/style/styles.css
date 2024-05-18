@@ -27,6 +27,16 @@
       flex-wrap: wrap;
   }
 
+  /* create challenge title */
+
+  .create{
+    color:rgb(226, 119, 43);
+    font-size:40px !important;
+    text-shadow: 2px 3px 2px rgba(255, 0, 0, 1);
+    margin-top: -50px !important;
+    padding-bottom: 26px;
+  }
+
   /* notify (won or not, etc) */
  
   .notify{

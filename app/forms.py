@@ -51,5 +51,5 @@ class EditProfileForm(FlaskForm):
                 raise ValidationError('Please use a different username.')
 
 class MoveForm(FlaskForm):
-    move = SelectField('Move', choices=[('rock', 'Rock'), ('paper', 'Paper'), ('scissors', 'Scissors')], validators=[DataRequired()])
+    move = SelectField('', choices=[('rock', 'Rock'), ('paper', 'Paper'), ('scissors', 'Scissors')], validators=[DataRequired()])
     submit = SubmitField('Submit')
