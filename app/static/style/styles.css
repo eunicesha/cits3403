@@ -427,3 +427,25 @@ span a {
     background-color: #4caf50;
     color: #fff;
 }
+
+/* submit button*/
+.submit-cont{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.custom-submit {
+    display: block;
+    margin: 0 auto;  /* Center the button horizontally */
+    background-color: #ff5722; /* Change button color */
+    color: white;  /* Change text color */
+    border: none;  /* Remove border */
+    padding: 10px 20px;  /* Add padding */
+    border-radius: 5px;  /* Round the corners */
+    transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+    font-size: 2rem !important;
+}
+.custom-submit:hover {
+    background-color: #e64a19;  /* Darken the background color on hover */
+}
