@@ -154,8 +154,6 @@
   
 }
 
-
-
   #rules{
     font-size: 1.75rem;
     -webkit-text-stroke: 0.3px white;
@@ -163,9 +161,6 @@
   }
 
 
-
-
-  
   .titlebuttons{
       text-transform: uppercase;
       font-weight: 900;
@@ -174,24 +169,6 @@
       color: #ffffff;
       line-height: .8;
       align-self: center;
-  }
-  
-  #acceptChallengeModalLabel{
-      text-transform: uppercase;
-      font-weight: 900;
-      font-style: italic;
-      font-size: 2rem;
-      color: #ba6bff;
-      line-height: .8;
-  }
-  
-  #createChallengeModalLabel{
-      text-transform: uppercase;
-      font-weight: 900;
-      font-style: italic;
-      font-size: 2rem;
-      color: #ff4040;
-      line-height: .8;
   }
   
 /* gradient */
@@ -231,44 +208,7 @@
   } 
   
   
-  .modal-dialog {
-      display: flex;
-      align-items: center;
-      min-height: calc(100% - 1rem);
-      max-width: 75%; 
-      margin: auto; 
-  }
-  
-  /* centering and sizing the modal content */
-  .modal-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      min-width: 300px;
-  }
-  
-  /* buttons centred */
-  .modal-body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      height: 250px; 
-  }
-  
-  
-  .modal-body button {
-      width: 200px; 
-      height: 50px;
-      margin: 10px;
-      padding: 10px;
-  }
-  
 
-  
-  
   
   /* BUTTONS */
   
