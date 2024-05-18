@@ -27,6 +27,20 @@
       flex-wrap: wrap;
   }
 
+  /* no games text */
+
+  .nogames{
+    font-size: 30;
+    font-style: italic;
+    color:rgb(246, 235, 235);
+    text-align: center;
+    text-shadow: rgba(240, 46, 170, 0.4)-5px 5px,
+    rgba(240, 46, 170, 0.3) -10px 10px,
+    rgba(240, 46, 170, 0.2) -15px 15px,
+    rgba(240, 46, 170, 0.1) -20px 20px,
+    rgba(240, 46, 170, 0.05) -25px 25px;
+  }
+
   /* create challenge title */
 
   .create{
@@ -37,13 +51,17 @@
     padding-bottom: 26px;
   }
 
+  .create-chal{
+
+  }
+
   /* notify (won or not, etc) */
  
   .notify{
     display: flex;
     justify-content: center;
-    align-content: center;
     padding-bottom: 20px;
+    color: rgb(255, 250, 153) !important;
   }
 
 

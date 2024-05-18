@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if open_challenges|length == 0 %}
-<h1 style="font-size: 30; font-style: italic; color:rgb(246, 235, 235);text-align: center; text-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;">no games have been created!</h1>
+<h1 class="nogames">no games have been created!</h1>
 {% endif%}
 {% for challenge in open_challenges %}
     <div class="container mt-4 challenge-box">
