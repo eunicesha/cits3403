@@ -426,3 +426,25 @@ span a {
     -webkit-text-stroke: 0.2px rgb(0, 0, 0);
 
 }
+
+
+.profile{
+    margin: 0 0 .5em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.75rem;
+    color: #d9d9d9;
+    line-height: .8;
+    margin: 0;
+    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
+}
+
+.editprofile{
+    color: #ffdaa6;
+}
+
+.editprofile:hover {
+    color: #ffba59;
+  }
+  
