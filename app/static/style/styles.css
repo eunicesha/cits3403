@@ -26,18 +26,18 @@
       padding-top: 20px;
       flex-wrap: wrap;
   }
-  
-  #challenges .card {
-      width: 353px;
-      height: 160px;
-      margin: 10px;
-      display: flex;
-  
+
+ 
+
+  /* challenge card */
+
+  .challenge{
+    
+    
   }
-  
-  #challenges .card-body p {
-      font-size: 14px;
-  }
+
+
+
   
   button {
       margin-top: 20px;
@@ -107,7 +107,19 @@
   line-height: .8;
   margin: 0;
   
+}
+
+
+
+  #rules{
+    font-size: 1.75rem;
+    -webkit-text-stroke: 0.3px white;
+    text-shadow: 2px 3px 2px rgb(255, 81, 81)
   }
+
+
+
+
   
   .titlebuttons{
       text-transform: uppercase;
@@ -208,6 +220,8 @@
       margin: 10px;
       padding: 10px;
   }
+  
+
   
   
   

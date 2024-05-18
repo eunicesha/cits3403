@@ -2,12 +2,15 @@
 
 {% block content %}
 <div>
-    <div class="game-description">
-        <h2 class = "title" style = "color:rgb(226, 119, 43); font-size:45px; text-shadow: 2px 3px 2px rgba(255, 0, 0, 1); text-align: center; margin-bottom: 20px;">Rules</h2>
-        <p>
-            What is <span class="title text" style = "color: rgb(194, 129, 255);">ROSHAMBO'D</span>?
+    <div class="game-description" style>
+        <h2 id="rules" class = "title" style = "color:rgb(226, 119, 43); font-size:45px; text-align: center; margin-bottom: 20px;">Rules</h2>
+        
+        <p class="title" style = "color: black; margin-bottom: 5px;">
+            What is <span id="rules"class="title text" style = "color: rgb(226, 119, 43);">ROSHAMBO'D</span>?
         </p>
-        <p>something interesting</p>
+        <p class="title" style = "color: black; margin-bottom: 5px;">we like to think of it as</p> <span id ="rules" class="title text" style = "color: rgb(226, 119, 43);">competitive paper, scissors, rock</span>
+        <p class="title" style = "color: black; margin-top: 10px;">it's easy enough. accept or create your own challenge,</p>
+        <p class="title" style = "color: black; margin-top: 5px;">and may the best person win!</p>
 
         <div class="row justify-content-md-center" style="padding:15px">
             {% if current_user.is_anonymous %}
