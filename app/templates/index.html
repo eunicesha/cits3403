@@ -16,7 +16,7 @@
             {% if current_user.is_anonymous %}
                 <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('login') }}">Log in</a>
             {% else %}
-                <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{url_for('game')}}">Play!</a>
+                <a class="bttn title" style="text-align: center" href="{{url_for('game')}}">Let's go!</a>
             {% endif %}
         </div>
     </div>
