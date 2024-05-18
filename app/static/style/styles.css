@@ -393,3 +393,36 @@ span a {
 .custom-submit:hover {
     background-color: #e64a19;  
 }
+
+.leaderboard{
+    font-size: 4rem !important;
+    margin-bottom: 15px;
+}
+
+.lb-cont{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.userlb{
+    padding-right: 400px;
+}
+
+.lbfont{
+    font-size: 2.5rem !important;
+    color:rgb(201, 201, 201) !important
+}
+
+.lbdata{
+    margin: 0 0 .5em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.75rem;
+    color: #ff5c47;
+    line-height: .8;
+    margin: 0;
+    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
+
+}
