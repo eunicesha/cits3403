@@ -301,4 +301,34 @@
     padding: 30px 40px;
   }
 
-    
+
+/* floaty title animation */
+.float {
+	
+	overflow: hidden;
+	transform: translatey(0px);
+	animation: float 5s ease-in-out infinite;
+	img { width: 100%; height: auto; }
+}
+span a {
+	font-size: 18px;
+	color: #cccccc;
+	text-decoration: none;
+	margin: 0 10px;
+	transition: all 0.4s ease-in-out;
+	&:hover {
+		color: #ffffff;
+	}
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
