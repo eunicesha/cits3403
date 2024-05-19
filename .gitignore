@@ -1,2 +1,12 @@
 # Ignore the virtual environment
 venv/
+
+#Ignore bytecode files
+__pycache__/*
+app/__pycache__/*
+
+#Ignore log files
+logs/*
+
+#Ignore the database file
+app.db
