@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2024-05-16 03:35:09,356 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
 2024-05-16 03:35:22,184 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
 2024-05-16 03:36:15,585 INFO: Microblog startup [in /workspaces/cits3403/app/__init__.py:46]
@@ -12,3 +13,35 @@
 2024-05-19 12:48:37,417 INFO: Microblog startup [in /Users/davindo/Desktop/CITS3403/projects/assignment/cits3403/app/__init__.py:46]
 2024-05-19 14:30:00,844 INFO: Microblog startup [in /Users/davindo/Desktop/CITS3403/projects/assignment/cits3403/app/__init__.py:46]
 2024-05-19 15:33:57,551 INFO: Microblog startup [in /Users/davindo/Desktop/CITS3403/projects/assignment/cits3403/app/__init__.py:46]
+=======
+2024-05-19 14:33:47,330 ERROR: Exception on /login [POST] [in C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\Desktop\game\cits3403\app\routes.py", line 36, in login
+    next_page = url_for('page')
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\helpers.py", line 220, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP Laptop\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 926, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'page'. Did you mean 'game' instead?
+2024-05-19 14:34:27,201 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
+>>>>>>> selenium-test
