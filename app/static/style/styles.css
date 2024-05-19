@@ -81,6 +81,9 @@
     width: 80%;
 }
 
+
+
+  
   button {
       margin-top: 20px;
   }
@@ -106,6 +109,24 @@
       left: 0;
       z-index: 1000;
   }
+  
+  
+  .align-right-buttons{
+      margin-right: 20px; 
+      
+  }
+  
+  
+  .navbar-nav.center-buttons {
+      flex:1;
+      justify-content: center;
+      display: flex;  
+  }
+  
+  .nav-acc-item{
+      margin-right:10px;
+      
+  } 
   
   
   @keyframes bg-animation {
