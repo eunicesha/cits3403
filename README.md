@@ -14,12 +14,13 @@ Users can also customise their accounts with username changes, or adding a perso
 
 ---
 ## Credit
-    __UWA ID__      ||  __NAME__            ||  __GITHUB USERNAME__   
-    23451626    ||  DAVIN DO        ||  RUBBADUK
-    23729581    ||  MIA O'DEA       ||  MIA-ODEA
-    23671856    ||  HOIYEN SHA      ||  EUNICESHA
-    24388802    ||  TASHI LHAMO     ||  TA-SHII
-
+<pre>
+     <b>UWA ID</b>      ||  <b>NAME</b>            ||  <b>GITHUB USERNAME</b>  
+     23451626    ||  DAVIN DO        ||  RUBBADUK
+     23729581    ||  MIA O'DEA       ||  MIA-ODEA
+     23671856    ||  HOIYEN SHA      ||  EUNICESHA
+     24388802    ||  TASHI LHAMO     ||  TA-SHII
+</pre>
 ---
 ## Launching
 ### Prerequisites
@@ -53,7 +54,7 @@ pip install -r requirements_unix.txt
 If an error occurs, run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` in Powershell.
 
 ## Running the Tests
-** If the virtual environment is active when the tests are run, there will be an error**
+**If the virtual environment is active when the tests are run, there will be an error**
 The tests are run by executing the following command using terminal in the root directory of the project.
 ```
 python3 -m tests
