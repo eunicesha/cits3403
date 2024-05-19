@@ -1,4 +1,4 @@
-from euniceblog import play_game
+from roshambod import play_game
 from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app
 from app.forms import LoginForm, MoveForm, RegistrationForm
