@@ -45,3 +45,4 @@ Traceback (most recent call last):
 werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'page'. Did you mean 'game' instead?
 2024-05-19 14:34:27,201 INFO: Microblog startup [in C:\Users\HP Laptop\Desktop\game\cits3403\app\__init__.py:46]
 >>>>>>> selenium-test
+2024-05-19 16:31:47,425 INFO: Microblog startup [in /Users/davindo/Desktop/CITS3403/projects/assignment/cits3403/app/__init__.py:46]

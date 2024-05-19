@@ -190,6 +190,12 @@
     text-shadow: 2px 3px 2px rgb(255, 81, 81)
   }
 
+  #rules1{
+    font-size: 1.75rem;
+    -webkit-text-stroke: 0.3px white;
+    text-shadow: 2px 3px 2px rgb(255, 81, 81)
+  }
+
 
   .titlebuttons{
       text-transform: uppercase;
