@@ -3,13 +3,17 @@ os.environ['DATABASE_URL'] = 'sqlite://'
 
 from datetime import datetime, timezone, timedelta
 import unittest
+from flask import url_for
 from app import app, db
+from flask_login import login_user, logout_user
 from app.models import Game, User
 
 class UserModelCase(unittest.TestCase):
     # Set up the application context and initialize the database
     def setUp(self):
-        self.app_context = app.app_context()
+        self.app = app
+        self.client = self.app.test_client()
+        self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()
 
@@ -61,6 +65,20 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(queried_game.opponent_move, 'scissors')
         self.assertEqual(queried_game.result, 'win')
         self.assertEqual(queried_game.status, 'finished') 
+
+    def test_leaderboard(self):
+        # Test the GET request to /leaderboard
+        user1 = User(username='user1', email='user1@example.com', points=2)
+        user2 = User(username='user2', email='user2@example.com', points=5)
+        db.session.add_all([user1, user2])
+        db.session.commit()
+
+        with self.client:
+            response = self.client.get('/leaderboard')
+            self.assertEqual(response.status_code, 200)  # Ensure the request was successful
+            self.assertIn(b'user2', response.data)  # Ensure the leaderboard contains user2
+            self.assertIn(b'user1', response.data)  # Ensure the leaderboard contains user1
+            self.assertLess(response.data.index(b'user2'), response.data.index(b'user1'))  # Ensure user2 appears before user1
 
 if __name__ == '__main__':
     unittest.main(verbosity=2) # Run the tests with verbose output
