@@ -11,6 +11,7 @@ You can see your history - game records are displayed on the profile page- and k
 the leaderboard page! 
 
 Users can also customise their accounts with username changes, or adding a personal description in the 'about me' section.
+
 ---
 ## Credit
     __UWA ID__      ||  __NAME__            ||  __GITHUB USERNAME__   
@@ -21,29 +22,29 @@ Users can also customise their accounts with username changes, or adding a perso
 
 ---
 ## Launching
-#### Prerequisites
+### Prerequisites
 [//]: # (Should check what version of python is actually needed)
 This project requires a minimum of python 3.10, which can be downloaded using the following instructions:
-##### linux:
+#### linux:
 ```
 $ sudo apt-get install python3.10
 ```
-##### mac:
+#### mac:
 ```
 $ brew install python3
 ```
-##### windows:
+#### windows:
 Download the installer from the [python website](https://www.python.org/downloads/windows/)
 
-#### Installation
+### Installation
 A virtual environment must be set up using the terminal in the root directory of the project.
-##### mac and Linux:
+#### mac and Linux:
 ```
 $ python3 -m venv flask
 $ source flask/bin/activate
 $ pip install -r requirements_unix.txt
 ```
-##### windows
+#### windows
 ```
 python -m venv flask
 .\flask\Scripts\Activate.ps1
