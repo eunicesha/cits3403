@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    No post at the moment!!
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
-    <div >
-        <a href="{{ url_for('page') }}">Back</a>
+<div>
+    <div class="game-description" style>
+        <!-- <h2 id="rules" class = "title" style = "color:rgb(226, 119, 43); font-size:45px; text-align: center; margin-bottom: 20px;">Rules</h2> -->
+        
+        <p class="title" style = "color: black; margin-bottom: 5px;">
+            What is <span id="rules"class="title text" style = "color: rgb(226, 119, 43);">ROSHAMBO'D</span>?
+        </p>
+        <p class="gamedesc title">we like to think of it as</p> <span id ="rules" class="title text" style = "color: rgb(226, 119, 43);">competitive paper, scissors, rock</span>
+        <p class="gamedesc title">it's easy enough. accept or create your own challenge,</p>
+        <p class="gamedesc title">and choose your weapon: paper, scissors, or rock. winner takes all!</p>
+
+        <div class="row justify-content-md-center" style="padding:15px">
+            {% if current_user.is_anonymous %}
+                <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('login') }}">Log in</a>
+            {% else %}
+                <a class="bttn title" style="text-align: center" href="{{url_for('game')}}">Let's go!</a>
+            {% endif %}
+        </div>
     </div>
+</div>
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+<!-- Form to accept a challenge-->
+{% block content %}
+<div class="container mt-4">
+    <h1 class="nogames leaderboard">ACCEPT CHALLENGE</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <div class="btn-group btn-group-toggle title" data-toggle="buttons">
+                {% for subfield in form.move %}
+                <label class="btn btn-outline-primary btn-move custom-submit">
+                    {{ subfield }}
+                    {% if subfield.label.text == 'Rock' %}
+                    <i class="fas fa-hand-rock"></i>
+                    {% elif subfield.label.text == 'Paper' %}
+                    <i class="fas fa-hand-paper"></i>
+                    {% elif subfield.label.text == 'Scissors' %}
+                    <i class="fas fa-hand-scissors"></i>
+                    {% endif %}
+                    {{ subfield.label.text }}
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group mt-3 submit-cont">
+            {{ form.submit(class="btn title custom-submit") }}
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const buttons = document.querySelectorAll('.btn-move');
+    
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                this.setAttribute('data-choice', this.querySelector('input').value);
+            });
+        });
+    });
+    </script>
+{% endblock %}

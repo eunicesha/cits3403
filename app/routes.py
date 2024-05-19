@@ -1,20 +1,23 @@
-from flask import render_template, flash, redirect, url_for, request
+from euniceblog import play_game
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, MoveForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import Game, User
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
-
-
+from sqlalchemy.orm import joinedload
+from sqlalchemy import or_, and_
+import logging
+logging.basicConfig(level=logging.INFO)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('page'))
+        return redirect(url_for('index'))
     
     form = LoginForm()
     if form.validate_on_submit():
@@ -38,26 +41,92 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('page'))
+    return redirect(url_for('login'))
 
 #first page(after log in) view function
 @app.route('/page')
 @login_required
 def page():
-    return render_template('page.html', title='Home Page')
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
+    return render_template('index.html', open_challenges=open_challenges, title='Home Page')
 
 #game view function
 @app.route('/game')
 @login_required
 def game():
-    return render_template('game.html', title='Home Page')
+    # Fetch all open challenges from the database
+    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
+    return render_template('game.html', open_challenges=open_challenges)
+
+@app.route("/fetch_challenges")
+def fetch_challenges():
+    # Fetch challenges from the database
+    challenges = Post.query.all()
+    challenges_data = []
+    for challenge in challenges:
+        challenge_data = {
+            "name": challenge.move
+            #"stake": challenge.stake
+        }
+        challenges_data.append(challenge_data)
+    return jsonify(challenges_data)
+
+@app.route("/create_challenge", methods=['GET', 'POST'])
+def create_challenge():
+    form = MoveForm()
+    if form.validate_on_submit():
+        # Save the user's move as an open challenge in the database
+        game = Game(user_id=current_user.id, user_move=form.move.data, status="Open")
+        db.session.add(game)
+        db.session.commit()
+        flash('Challenge created successfully!', 'success')
+        return redirect(url_for('game'))
+    return render_template('create_challenge.html', form=form)
+
+@app.route("/accept_challenge/<int:challenge_id>", methods=['GET', 'POST'])
+def accept_challenge(challenge_id):
+    # Fetch the challenge from the database
+    challenge = Game.query.get(challenge_id)
+    if challenge:
+        # Check if the challenge is not created by the current user
+        if challenge.user_id == current_user.id:
+            flash('You cannot accept your own challenge!', 'danger')
+            return redirect(url_for('game'))
+        
+        form = MoveForm()
+        if form.validate_on_submit():
+            # Update the challenge with the opponent's move and change status to "Closed"
+            challenge.opponent_move = form.move.data
+            challenge.status = "Closed"
+            # Determine the result of the game
+            result = play_game(challenge.user_move, challenge.opponent_move)
+            challenge.result = result
+            challenge.opponent_id = current_user.id
+            if challenge.user.points is None:
+                challenge.user.points = 0
+            if challenge.opponent.points is None:
+                challenge.opponent.points = 0
+            if result == 'Lost':
+                challenge.user.points = challenge.user.points + 1
+                challenge.opponent.points = challenge.opponent.points - 1
+            elif result == "Won":
+                challenge.user.points = challenge.user.points - 1
+                challenge.opponent.points = challenge.opponent.points + 1
+            points = challenge.opponent.points
+            db.session.commit()
+            flash(f'You {result}! You now have {points} points.', 'success')
+            return redirect(url_for('index'))
+        return render_template('accept_challenge.html', form=form)
+    else:
+        flash('Challenge not found!', 'danger')
+        return redirect(url_for('game'))
+
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    # logic needed
-    return render_template('index.html', title='Home Page')
+    return render_template('index.html', title='Roshambo\'d!')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -65,7 +134,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data, email=form.email.data, points = 0)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -77,11 +146,13 @@ def register():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts)
+    games = Game.query.filter(
+            or_(
+                Game.user_id == current_user.id,
+                Game.opponent_id == current_user.id
+            )
+        ).all()
+    return render_template('user.html', user=user, games=games)
 
 @app.before_request
 def before_request():
@@ -104,3 +175,10 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+@app.route('/leaderboard')
+def leaderboard():
+    users = User.query.order_by(User.points.desc()).all()
+    for user in users:
+        logging.info(f'User: {user.username}, Points: {user.points}, Type: {type(user.points)}')
+    return render_template('leaderboard.html', users=users)
