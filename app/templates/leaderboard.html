@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Leaderboard</h1>
-<table>
-    <tr>
-        <td>User</td>
-        <td>Points</td>
-    </tr>
-        {% for user in users %}
+<div class="title">
+    <h1 class="nogames leaderboard">Leaderboard</h1>
+    <table class="lb-cont">
         <tr>
-            <td>{{ user.username }}</td>
-            {% if user.points == None %}
-            <td>0</td>
-            {% else %}
-                <td>{{ user.points }}</td>
-            {% endif %}
-        {% endfor %}
-</table>
+            <td class="lbfont title userlb">User</td>
+            <td class="lbfont title ">Points</td>
+        </tr>
+            {% for user in users %}
+            <tr class="lbdata">
+                <td style="padding:6px">{{ user.username }}</td>
+                {% if user.points == None %}
+                <td>0</td>
+                {% else %}
+                    <td>{{ user.points }}</td>
+                {% endif %}
+            {% endfor %}
+    </table>
+</div>
 
 
 {% endblock %}

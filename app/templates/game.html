@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
+
 {% block content %}
 {% if open_challenges|length == 0 %}
-<h1 style="font-size: 30; font-style: italic; color:rgb(246, 235, 235);text-align: center; text-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;">no games have been created!</h1>
+<h1 class="nogames">no games have been created!</h1>
 {% endif%}
+<div class="row justify-content-md-center" style="padding:15px">
+    <a class="bttn title create-btn" href="{{ url_for('create_challenge') }}">Create Challenge</a>
+</div>
 {% for challenge in open_challenges %}
-    <div class="container mt-4">
-        <div id="challenges" class="row">
+
+    <div class="container mt-4 challenge-box">
+        <div id="challenges" class="row title" >
             {{ challenge.user.username  }} wants to play!
-            <a class="btn btn-primary fun center-buttons" href="{{ url_for('accept_challenge', challenge_id=challenge.id) }}">Accept Challenge!</a>
+            <a class="btn btn-primary fun" href="{{ url_for('accept_challenge', challenge_id=challenge.id) }}"
+            style="margin-top: 10px;">Accept Challenge!</a>
         </div>
 </div>
 {% endfor %}
-<div class="row justify-content-md-center" style="padding:15px">
-    <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('create_challenge') }}">Create Challenge</a>
-</div>
 {% endblock %}

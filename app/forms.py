@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, StringField, PasswordField, BooleanField, SubmitField, ValidationError
+from wtforms import RadioField, SelectField, StringField, PasswordField, BooleanField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 import sqlalchemy as sa
 from app import db
@@ -51,5 +51,5 @@ class EditProfileForm(FlaskForm):
                 raise ValidationError('Please use a different username.')
 
 class MoveForm(FlaskForm):
-    move = SelectField('Move', choices=[('rock', 'Rock'), ('paper', 'Paper'), ('scissors', 'Scissors')], validators=[DataRequired()])
+    move = RadioField('', choices=[('rock', 'Rock'), ('paper', 'Paper'), ('scissors', 'Scissors')], validators=[DataRequired()])
     submit = SubmitField('Submit')

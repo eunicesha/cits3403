@@ -2,19 +2,21 @@
 
 {% block content %}
 <div>
-    <div class="game-description">
-        <h2>Welcome to Roshambo'd!</h2>
-        <p>
-            <strong>Roshambo'd </strong> is an exciting game that allows users to create challenges and post them for others to participate in.
+    <div class="game-description" style>
+        <!-- <h2 id="rules" class = "title" style = "color:rgb(226, 119, 43); font-size:45px; text-align: center; margin-bottom: 20px;">Rules</h2> -->
+        
+        <p class="title" style = "color: black; margin-bottom: 5px;">
+            What is <span id="rules"class="title text" style = "color: rgb(226, 119, 43);">ROSHAMBO'D</span>?
         </p>
-        <p>
-            Challenge your friends, test your luck, and see who comes out victorious in this classic game of <span>Rock</span>, <span>Paper</span>, <span>Scissors</span>!
-        </p>
+        <p class="title" style = "color: black; margin-bottom: 5px;">we like to think of it as</p> <span id ="rules" class="title text" style = "color: rgb(226, 119, 43);">competitive paper, scissors, rock</span>
+        <p class="title" style = "color: black; margin-top: 10px;">it's easy enough. accept or create your own challenge,</p>
+        <p class="title" style = "color: black; margin-top: 5px;">and choose your weapon: paper, scissors, or rock. winner takes all!</p>
+
         <div class="row justify-content-md-center" style="padding:15px">
             {% if current_user.is_anonymous %}
                 <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{ url_for('login') }}">Log in</a>
             {% else %}
-                <a class="btn btn-primary fun center-buttons col-md-auto text-center" style="text-align: center" href="{{url_for('game')}}">Play!</a>
+                <a class="bttn title" style="text-align: center" href="{{url_for('game')}}">Let's go!</a>
             {% endif %}
         </div>
     </div>
