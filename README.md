@@ -24,7 +24,6 @@ Users can also customise their accounts with username changes, or adding a perso
 ---
 ## Launching
 ### Prerequisites
-[//]: # (Should check what version of python is actually needed)
 This project requires a minimum of python 3.10, which can be downloaded using the following instructions:
 #### linux:
 ```
@@ -57,13 +56,12 @@ If an error occurs, run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scop
 **If the virtual environment is active when the tests are run, there will be an error**
 The tests are run by executing the following command using terminal in the root directory of the project.
 ```
-python3 -m tests
+python3 -m tests.tests
 ```
 AND
 ```
-python3 -m selenium_test
+python3 -m tests.selenium
 ```
-[//]: # (or whatever the selenium test is actually called)
 
 ## Deployment
 The website can be deployed using terminal in the root directory of the project:
