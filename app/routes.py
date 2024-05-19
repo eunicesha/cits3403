@@ -32,7 +32,7 @@ def login():
         next_page = request.args.get('next')
         # validate the next URL to ensure redirects remain internal
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('page')
+            next_page = url_for('index')
         return redirect(next_page)
     
     return render_template('login.html', title='Sign In', form=form)
@@ -42,13 +42,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-#first page(after log in) view function
-@app.route('/page')
-@login_required
-def page():
-    open_challenges = Game.query.filter_by(status="Open").options(joinedload(Game.user)).all()
-    return render_template('index.html', open_challenges=open_challenges, title='Home Page')
 
 #game view function
 @app.route('/game')
