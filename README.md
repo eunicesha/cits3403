@@ -42,13 +42,13 @@ A virtual environment must be set up using the terminal in the root directory of
 ```
 $ python3 -m venv flask
 $ source flask/bin/activate
-$ pip install -r requirements_unix.txt
+$ pip install -r requirements.txt
 ```
 #### windows
 ```
 python -m venv flask
 .\flask\Scripts\Activate.ps1
-pip install -r requirements_unix.txt
+pip install -r requirements.txt
 ```
 If an error occurs, run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` in Powershell.
 
